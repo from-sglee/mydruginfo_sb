@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mydruginfo.repository.StandardCodeMapper">
+
+    <select id="selectStandardCodeBySCode" resultType="standardCode">
+        SELECT 	drug_name_kr
+							, company_name
+							, packing_capacity
+							, quantity
+							, formulation_type
+							, package_type
+							, item_code
+							, date_authorization
+							, drug_type
+							, representative_code
+							, standard_code
+							, product_code
+							, common_name_code
+							, memo
+							, cancellation_date
+							, effective_date
+							, end_date
+							, serialnumber_yn
+							, memo_serialnumber
+							, atc_code
+							, specialcare_type
+							, reading_equipment
+							, reg_date
+          FROM tb_standard_code
+         WHERE standard_code = #{sCode}
+    </select>
+
+    <select id="selectAllStandardCode" resultType="standardCode">
+        SELECT drug_name_kr
+							, company_name
+							, packing_capacity
+							, quantity
+							, formulation_type
+							, package_type
+							, item_code
+							, date_authorization
+							, drug_type
+							, representative_code
+							, standard_code
+							, product_code
+							, common_name_code
+							, memo
+							, cancellation_date
+							, effective_date
+							, end_date
+							, serialnumber_yn
+							, memo_serialnumber
+							, atc_code
+							, specialcare_type
+							, reading_equipment
+							, reg_date
+          FROM CITY
+         WHERE company_name = #{cName}
+    </select>
+    
+		<select id="selectStandardCodeByCompanyName" resultType="standardCode">
+        SELECT drug_name_kr
+							, company_name
+							, packing_capacity
+							, quantity
+							, formulation_type
+							, package_type
+							, item_code
+							, date_authorization
+							, drug_type
+							, representative_code
+							, standard_code
+							, product_code
+							, common_name_code
+							, memo
+							, cancellation_date
+							, effective_date
+							, end_date
+							, serialnumber_yn
+							, memo_serialnumber
+							, atc_code
+							, specialcare_type
+							, reading_equipment
+							, reg_date
+          FROM CITY
+    </select>
+    <insert id="insertStandardCode">
+      INSERT INTO CITY (drug_name_kr
+							, company_name
+							, packing_capacity
+							, quantity
+							, formulation_type
+							, package_type
+							, item_code
+							, date_authorization
+							, drug_type
+							, representative_code
+							, standard_code
+							, product_code
+							, common_name_code
+							, memo
+							, cancellation_date
+							, effective_date
+							, end_date
+							, serialnumber_yn
+							, memo_serialnumber
+							, atc_code
+							, specialcare_type
+							, reading_equipment)
+      VALUES (#{drug_name_kr},
+							#{company_name},
+							#{packing_capacity},
+							#{quantity},
+							#{formulation_type},
+							#{package_type},
+							#{item_code},
+							#{date_authorization},
+							#{drug_type},
+							#{representative_code},
+							#{standard_code},
+							#{product_code},
+							#{common_name_code},
+							#{memo},
+							#{cancellation_date},
+							#{effective_date},
+							#{end_date},
+							#{serialnumber_yn},
+							#{memo_serialnumber},
+							#{atc_code},
+							#{specialcare_type},
+							#{reading_equipment})
+    </insert>
+
+</mapper>
