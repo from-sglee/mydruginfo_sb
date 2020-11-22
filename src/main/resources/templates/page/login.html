@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layout/custom_layout">
+	
+	<div layout:fragment="content">
+	
+		<div class="wrapper" method="post">
+			<form class="form-signin" action="/drug/loginCheck" method="post">
+				<h2 class="form-signin-heading">Admin Login</h2>
+				<input type="text" class="form-control" name="userId"
+					placeholder="ID" required="" autofocus="" /> <input type="password"
+					class="form-control" name="userPw" placeholder="Password"
+					required="" /> <label class="checkbox"> <input
+					type="checkbox" value="remember-me" id="rememberMe"
+					name="rememberMe"> Remember me
+				</label>
+				<button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
+			</form>
+		</div>
+	</div>
