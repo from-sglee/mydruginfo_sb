@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+
+<html lagn="ko" 
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+		<meta name="description" content="MyDrugInfo" />
+		<meta name="author" content="MyDrugInfo" />
+		<title>MyDrugInfo</title>
+		
+		<!-- config fragment  -->
+		<th:block th:replace="fragment/config :: configFragment" ></th:block>
+	</head>
+	
+	<body id="page-top" role="document">
+		<!-- header fragment -->
+		<th:block th:replace="fragment/header :: headerFragment"></th:block>
+		
+		<!-- content fragment (w/ layout) -->
+		<th:block layout:fragment="content"></th:block>
+		
+		<!-- footer fragment -->
+		<th:block th:replace="fragment/footer :: footerFragment"> </th:block>
+	</body>
+
+</html>
