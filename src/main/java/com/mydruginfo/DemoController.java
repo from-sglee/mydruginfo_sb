@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class DemoController{
 	@ResponseBody
-	@RequestMapping("/")
-	public String home() {
+	@RequestMapping("/demo")
+	public String demo() {
 		System.out.println("Hello");
 		return "Hello Boot";
 	}
