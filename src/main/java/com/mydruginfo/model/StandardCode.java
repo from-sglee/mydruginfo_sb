@@ -29,7 +29,12 @@ public class StandardCode {
 	String specialcare_type;
 	String reading_equipment;
 	//String reg_date;				// not null (default current_timestamp)
-	
+
+	public StandardCode() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
 	@Override
 	public String toString() {
 		return "StandardCode [drug_name_kr=" + drug_name_kr + ", company_name=" + company_name + ", pharma_standard="
@@ -42,6 +47,4 @@ public class StandardCode {
 				+ ", memo_serialnumber=" + memo_serialnumber + ", atc_code=" + atc_code + ", specialcare_type="
 				+ specialcare_type + ", reading_equipment=" + reading_equipment + "]";
 	}
-
-	
 }
