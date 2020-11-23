@@ -4,7 +4,7 @@ import lombok.*;
 
 @Data
 @Builder
-@NoArgsConstructor @RequiredArgsConstructor @Getter @Setter @ToString
+@NoArgsConstructor @RequiredArgsConstructor @AllArgsConstructor @Getter @Setter @ToString
 public class StandardCode {
 	@NonNull String drug_name_kr;			// not null
 	@NonNull String company_name;			// not null
