@@ -14,21 +14,21 @@ import com.mydruginfo.repository.StandardCodeMapper;
 public class StandardCodeService {
 
     @Autowired
-    StandardCodeMapper sCodeMapper;
+    StandardCodeMapper standardCodeMapper;
 
-    public StandardCode getStandardCodeBySCode(String sCode) {
-        return sCodeMapper.getStandardCodeBySCode(sCode);
+    public StandardCode getStandardCodeBySCode(long standardCode) {
+        return standardCodeMapper.selectStandardCodeBySCode(standardCode);
     }
 
-    public List<StandardCode> getAllCity() {
-        return sCodeMapper.selectAllStandardCode();
+    public List<StandardCode> getAllStandardCode() {
+        return standardCodeMapper.selectAllStandardCode();
     }
 
-    public List<StandardCode> selectStandardCodeByCompanyName(String cName) {
-        return sCodeMapper.selectStandardCodeByCompanyName(cName);
+    public List<StandardCode> selectStandardCodeByCompanyName(String companyName) {
+        return standardCodeMapper.selectStandardCodeByCompanyName(companyName);
     }
-    public void addStandardCode(StandardCode sCode) {
-    	sCodeMapper.insertStandardCode(sCode);
+    public void addStandardCode(StandardCode standardCode) {
+    	standardCodeMapper.insertStandardCode(standardCode);
     }
 
 }

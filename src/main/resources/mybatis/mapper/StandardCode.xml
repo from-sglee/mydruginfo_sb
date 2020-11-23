@@ -5,7 +5,7 @@
 
 <mapper namespace="com.mydruginfo.repository.StandardCodeMapper">
 
-    <select id="selectStandardCodeBySCode" resultType="standardCode">
+    <select id="selectStandardCodeBySCode" resultType="com.mydruginfo.model.StandardCode">
         SELECT 	drug_name_kr
 							, company_name
 							, packing_capacity
@@ -30,10 +30,10 @@
 							, reading_equipment
 							, reg_date
           FROM tb_standard_code
-         WHERE standard_code = #{sCode}
+         WHERE standard_code = #{sCode, jdbcType=INTEGER}
     </select>
 
-    <select id="selectAllStandardCode" resultType="standardCode">
+    <select id="selectAllStandardCode" resultType="com.mydruginfo.model.StandardCode">
         SELECT drug_name_kr
 							, company_name
 							, packing_capacity
@@ -61,7 +61,7 @@
          WHERE company_name = #{cName}
     </select>
     
-		<select id="selectStandardCodeByCompanyName" resultType="standardCode">
+		<select id="selectStandardCodeByCompanyName" resultType="com.mydruginfo.model.StandardCode">
         SELECT drug_name_kr
 							, company_name
 							, packing_capacity
@@ -87,7 +87,8 @@
 							, reg_date
           FROM CITY
     </select>
-    <insert id="insertStandardCode">
+    
+    <insert id="insertStandardCode" parameterType="com.mydruginfo.model.StandardCode">
       INSERT INTO CITY (drug_name_kr
 							, company_name
 							, packing_capacity
