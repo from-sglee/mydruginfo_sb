@@ -1,4 +1,4 @@
-	/* login.jsp */
+	/* login.html */
 	
 	body {
 		background: #eee !important;	
@@ -6,7 +6,7 @@
 	
 	.wrapper {	
 		margin-top: 80px;
-	  margin-bottom: 80px;
+		margin-bottom: 80px;
 	}
 	
 	.form-signin {
@@ -24,106 +24,66 @@
 	
 	.checkbox {
 		margin-bottom: 30px;
-	  font-weight: normal;
-	  margin-left: 25px;
+		font-weight: normal;
+		margin-left: 25px;
 	}
 
 	.form-control {
-	  position: relative;
-	  font-size: 16px;
-	  height: auto;
-	  padding: 10px;
+		position: relative;
+		font-size: 16px;
+		height: auto;
+		padding: 10px;
 		@include box-sizing(border-box);
 
 	}
 
 	input[type="text"] {
-	  margin-bottom: -1px;
-	  border-bottom-left-radius: 0;
-	  border-bottom-right-radius: 0;
+		margin-bottom: -1px;
+		border-bottom-left-radius: 0;
+		border-bottom-right-radius: 0;
 	}
 
 	input[type="password"] {
-	  margin-bottom: 20px;
-	  border-top-left-radius: 0;
-	  border-top-right-radius: 0;
+		margin-bottom: 20px;
+		border-top-left-radius: 0;
+		border-top-right-radius: 0;
 	}
 
-/* home.jsp */
+	/* header.html */
 
-	body {
-	  padding-top: 50px;
-	  margin: 10px;
+	#mainNav .nav-link {
+		color: rgba(130, 130, 130, 0.9);
+		font-weight: 600;
 	}
-	.bgImg{
-		background-image: url('../../images/suspicious-medications-magnifying-glass_168171-290.jpg');
-		background-size: cover;
-	}
-	.starter-template {
-	  padding: 100px 15px;
-	  text-align: center;
-	/*  background-image:url('resources/images/suspicious-medications-magnifying-glass_168171-290.jpg'); */
-	  background-size: cover;
-	  z-index:0;
-	  /*background: rgba(0,0,0,0,3);*/
-	}
-	    
-	.starter-template::after{
-		content: "";
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-		background-size: cover;
-		z-index:1;
-		opacity:0.3!important;
-		
-		background-image: linear-gradient(120deg, #eaee44, #33d0ff);
-	  /*background: rgba(0,0,0,0,3);*/
-	}
-	
-	.banner:after {
-	  content: "";  /* :before and :after both require content*/
-	  position: absolute;
-	  top: 0;
-	  left: 0;
-	  width: 100%;
-	  height: 100%;
-	  background-color: #fff;
-	  opacity: .5;
-	  /* mix-blend-mode: color;
-	  // mix-blend-mode: hard-light;
-	   // mix-blend-mode: hue;*/
-	}
-	
-	.banner > * {
-	  z-index: 100;
-	}
-	
-	.banner {
-	  text-align: center;
-	  position: relative;
-	  min-height: 60vh;
-	  background-image: url('../../images/suspicious-medications-magnifying-glass_168171-290.jpg');
-	  background-size: cover;
-	  display: flex;  
-	}
-	
-	.banner-text {
-	  padding: 100px 15px;
-	  text-align: center;
-	  width: -webkit-fill-available;
-	}
-	
-	.banner-text p {
-		padding: 20px;
-	}
-	
-	h1 {
-	  margin: auto;  
-	}
+
+	/* home.html */
+
 	.nav-bar-btn {
-	    position: absolute;
-	    top: 15%;
+		position: absolute;
+		top: 15%;
+	}
+	
+	.table-detail .image {
+		text-align: center;
+		vertical-align: center;
+		padding-top: 30px;
+	}
+	
+	.detail-section {
+		padding: 10rem 0;
+		background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.5) 75%, #000000 100%), url("../assets/img/bg-signup.jpg");
+		background-position: center;
+		background-repeat: no-repeat;
+		background-attachment: scroll;
+		background-size: cover;
+	}
+	.detail-section .form-inline input {
+		box-shadow: 0 0.1875rem 0.1875rem 0 rgba(0, 0, 0, 0.1) !important;
+		padding: 1.25rem 2rem;
+		height: auto;
+		font-family: "Varela Round", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+		font-size: 80%;
+		text-transform: uppercase;
+		letter-spacing: 0.15rem;
+		border: 0;
 	}

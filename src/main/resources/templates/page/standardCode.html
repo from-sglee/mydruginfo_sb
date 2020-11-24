@@ -5,19 +5,19 @@
 	layout:decorator="layout/default_layout">
 
 	<div layout:fragment="content">
-		<section class="about-section text-center" id="detailStandardCode">
+		<section class="detail-section" id="detailStandardCode">
 			<div class="container">
 				<div class="row">
 					<div class="page-header">
-						<h2 class="text-white mb-4">Detail Information :: Standard Code</h2>
+						<h2 class="text-secondary mb-4">Detail Information :: Standard Code</h2>
 					</div>
 					<div class="col-md-12 mt-5">
-						<table class="table text-white-50">
+						<table class="table text-dark table-detail">
 							<tbody>
 								<tr>
 									<th>standardCode</th>
 									<td th:text="${data.sCodeVO.standard_code}"></td>
-									<td rowspan="4" colspan="2">Image</td>
+									<td rowspan="4" colspan="2" class="image"><img src=""></td>
 								</tr>
 								<tr>
 									<th>Drug Name(kr)</th>
