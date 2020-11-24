@@ -47,7 +47,7 @@ public class AdminService {
 	}
 
 	public void logout(HttpSession session) {
-		session.removeAttribute("userId");
+		session.removeAttribute("admin_id");
 		session.invalidate();
 	}
 

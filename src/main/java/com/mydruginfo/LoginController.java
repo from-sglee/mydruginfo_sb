@@ -41,6 +41,7 @@ public class LoginController {
 		ModelAndView mav = new ModelAndView();
 
 		if (result == true) {
+			session.setAttribute("admin_id", vo.getAdmin_id());
 			mav.setViewName("page/home");
 			mav.addObject("msg", "success");
 			out.println("<script>alert('로그인이 되었습니다.')</script>");
@@ -68,7 +69,7 @@ public class LoginController {
 		
 		response.setContentType("text/html; charset=utf-8");
 		PrintWriter out = response.getWriter();
-		out.println("<script>alert('로그아웃 되었습니다.');location.href='page/home';</script>");
+		out.println("<script>alert('로그아웃 되었습니다.');location.href='/';</script>");
 		
 		out.flush();
 	}
