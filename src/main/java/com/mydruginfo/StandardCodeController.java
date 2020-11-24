@@ -13,7 +13,6 @@ import org.springframework.web.servlet.ModelAndView;
 import com.mydruginfo.model.StandardCode;
 import com.mydruginfo.service.StandardCodeService;
 
-
 @Controller
 public class StandardCodeController {
 
@@ -29,12 +28,9 @@ public class StandardCodeController {
 		StandardCode sCodeVO = service.getStandardCodeBySCode(Long.parseLong(s_code));
 		
 		modelAndView.setViewName("page/standardCode");
-		System.out.println(">> getStandardCodeBySCode : {" + s_code + "} : " + sCodeVO.toString());
-		
 		map.put("function", "getScodeBySCode");
 		map.put("sCodeVO", sCodeVO);
 		modelAndView.addObject("data", map);
-		//modelAndView.addObject("sCodeVO", sCodeVO);
 		
 		return modelAndView;
 	}
