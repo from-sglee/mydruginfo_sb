@@ -16,7 +16,7 @@
 						<li class="nav-item"><a class="nav-link js-scroll-trigger" href="#contact">Contact</a></li>
 						<li th:if="${session.isEmpty()}" class="nav-item"><a class="nav-link js-scroll-trigger" href="/login">Login</a></li>
 						<li th:unless="${session.isEmpty()}" class="nav-item"><a class="nav-link js-scroll-trigger" href="/logout">Logout</a></li>
-						
+						<li th:unless="${session.isEmpty()}" class="nav-item"><a class="nav-link js-scroll-trigger" href="/adminpage">Admin</a></li>
 					</ul>
 				</div>
 			</div>
