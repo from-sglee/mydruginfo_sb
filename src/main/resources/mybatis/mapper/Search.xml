@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mydruginfo.repository.SearchMapper">
+
+    <select id="getSearch" resultType="com.mydruginfo.model.StandardCode">
+        SELECT 	drug_name_kr
+							, company_name
+							, packing_capacity
+							, quantity
+							, formulation_type
+							, package_type
+							, item_code
+							, date_authorization
+							, drug_type
+							, representative_code
+							, standard_code
+							, product_code
+							, common_name_code
+							, memo
+							, cancellation_date
+							, effective_date
+							, end_date
+							, serialnumber_yn
+							, memo_serialnumber
+							, atc_code
+							, specialcare_type
+							, reading_equipment
+							, reg_date
+          FROM tb_standard_code
+         WHERE #{checkbox} LIKE ‘%#{keyword}%’ 
+    </select>
+
+    
+
+</mapper>
