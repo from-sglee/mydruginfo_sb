@@ -3,7 +3,7 @@ package com.mydruginfo.model;
 public class StandardCode {
 	String drug_name_kr;			// not null
 	String company_name;			// not null
-	String pharma_standard;
+	String packing_capacity;
 	int quantity;
 	String formulation_type;
 	String package_type;
@@ -31,7 +31,7 @@ public class StandardCode {
 		// TODO Auto-generated constructor stub
 	}
 
-	public StandardCode(String drug_name_kr, String company_name, String pharma_standard, int quantity,
+	public StandardCode(String drug_name_kr, String company_name, String packing_capacity, int quantity,
 			String formulation_type, String package_type, int item_code, String date_authorization, String drug_type,
 			Long representative_code, Long standard_code, int product_code, String common_name_code, String memo,
 			String cancellation_date, String effective_date, String end_date, String serialnumber_yn,
@@ -40,7 +40,7 @@ public class StandardCode {
 		super();
 		this.drug_name_kr = drug_name_kr;
 		this.company_name = company_name;
-		this.pharma_standard = pharma_standard;
+		this.packing_capacity = packing_capacity;
 		this.quantity = quantity;
 		this.formulation_type = formulation_type;
 		this.package_type = package_type;
@@ -80,12 +80,12 @@ public class StandardCode {
 		this.company_name = company_name;
 	}
 
-	public String getPharma_standard() {
-		return pharma_standard;
+	public String getPacking_capacity() {
+		return packing_capacity;
 	}
 
-	public void setPharma_standard(String pharma_standard) {
-		this.pharma_standard = pharma_standard;
+	public void setPacking_capacity(String packing_capacity) {
+		this.packing_capacity = packing_capacity;
 	}
 
 	public int getQuantity() {
@@ -258,8 +258,8 @@ public class StandardCode {
 
 	@Override
 	public String toString() {
-		return "StandardCode [drug_name_kr=" + drug_name_kr + ", company_name=" + company_name + ", pharma_standard="
-				+ pharma_standard + ", quantity=" + quantity + ", formulation_type=" + formulation_type
+		return "StandardCode [drug_name_kr=" + drug_name_kr + ", company_name=" + company_name + ", packing_capacity="
+				+ packing_capacity + ", quantity=" + quantity + ", formulation_type=" + formulation_type
 				+ ", package_type=" + package_type + ", item_code=" + item_code + ", date_authorization="
 				+ date_authorization + ", drug_type=" + drug_type + ", representative_code=" + representative_code
 				+ ", standard_code=" + standard_code + ", product_code=" + product_code + ", common_name_code="

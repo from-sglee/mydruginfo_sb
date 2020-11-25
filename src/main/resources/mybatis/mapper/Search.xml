@@ -30,7 +30,7 @@
 							, reading_equipment
 							, reg_date
           FROM tb_standard_code
-         WHERE #{checkbox} LIKE ‘%#{keyword}%’ 
+         WHERE ${checkbox} LIKE CONCAT('%','${searchText}','%')
     </select>
 
     

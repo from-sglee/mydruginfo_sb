@@ -4,144 +4,178 @@
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorator="layout/default_layout">
 
-	<!-- css for this page -->
-	<!-- <th:block layout:fragment="cssz">
+<!-- css for this page -->
+<!-- <th:block layout:fragment="cssz">
 		<link rel="stylesheet" th:href="@{/css/styles.css}" >
 	</th:block> -->
-	
-	<!-- script for this page -->
-	<!-- <th:block layout:fragment="script">
+
+<!-- script for this page -->
+<!-- <th:block layout:fragment="script">
 		<script th:src="@{/js/scripts.js}"></script>
 	</th:block> -->
-	
-	<div layout:fragment="content">
-		<!-- Masthead-->
-		<header class="masthead">
-			<div class="container d-flex h-100 align-items-center">
-				<div class="mx-auto text-center">
-					<h1 class="mx-auto my-0 text-uppercase">DrugInfo</h1>
-					<h2 class="text-gray-80 mx-auto mt-2 mb-5">A free website where you can find useful drug information in South Korea.</h2>
-					<a class="btn btn-primary js-scroll-trigger" href="#search">Find Drugs</a>
+
+<div layout:fragment="content">
+	<!-- Masthead-->
+	<header class="masthead">
+		<div class="container d-flex h-100 align-items-center">
+			<div class="mx-auto text-center">
+				<h1 class="mx-auto my-0 text-uppercase">DrugInfo</h1>
+				<h2 class="text-gray-80 mx-auto mt-2 mb-5">A free website where
+					you can find useful drug information in South Korea.</h2>
+				<form id="searchForm" name="searchForm" class="form-inline d-flex justify-content-center" action="/search">
+					<div>
+						<input type="radio" name="drug_name_search" value="true">약품명
+						<input type="radio" name="company_name_search" value="true">업체명
+						<input type="radio" name="ATC_code_search" value="true">ATC코드
+						<input type="radio" name="product_code_search" value="true">제품코드
+						<input type="radio" name="common_name_code_search" value="true">일반명코드
+					</div>
+					<input id="searchText" name="searchText" type="text" placeholder="Search..." class="form-control d-flex justify-content-around mr-0 mr-sm-2 mb-3 mb-sm-0">
+					<button class="btn btn-primary " type="submit">Search</button>
+				</form>
+			</div>
+		</div>
+	</header>
+	<!-- About-->
+	<section class="about-section text-center" id="about">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8 mx-auto">
+					<h2 class="text-white mb-4">About MyDrugInfo</h2>
+					<p class="text-white-50">
+						MyDrugInfo is a free website created by David and Sophia.<br>
+						The latest version of MyDrugInfo is available at <a
+							href="https://my-drug-info.herokuapp.com/">my-drug-info.heroku.com</a>
+					</p>
 				</div>
 			</div>
-		</header>
-		<!-- About-->
-		<section class="about-section text-center" id="about">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-8 mx-auto">
-						<h2 class="text-white mb-4">About MyDrugInfo</h2>
-							<p class="text-white-50"> 
-								MyDrugInfo is a free website created by David and Sophia.<br>
-								The latest version of MyDrugInfo is available at <a href="https://my-drug-info.herokuapp.com/">my-drug-info.heroku.com</a>
-							</p>
-						</div>
-					</div>
-				<img class="img-fluid" src="resources/bootstrap/assets/img/ipad.png" alt="" />
-			</div>
-		</section>
-			
-		<!-- Projects-->
-		<section class="projects-section bg-light" id="search">
-			<div class="container">
+			<img class="img-fluid" src="resources/bootstrap/assets/img/ipad.png"
+				alt="" />
+		</div>
+	</section>
+
+	<!-- Projects-->
+	<section class="projects-section bg-light" id="search">
+		<div class="container">
 			<!-- Featured Project Row-->
-				<div class="row align-items-center no-gutters mb-4 mb-lg-5">
-					<div class="col-xl-8 col-lg-7"><img class="img-fluid mb-3 mb-lg-0" src="resources/bootstrap/assets/img/medications-magnifying-glass.jpg" alt="" /></div>
-					<div class="col-xl-4 col-lg-5">
-						<div class="featured-text text-center text-lg-left">
-							<h4>Shoreline</h4>
-							<p class="text-black-50 mb-0">Grayscale is open source and MIT licensed. This means you can use it for any project - even commercial projects! Download it, customize it, and publish your website!</p>
-						</div>
+			<div class="row align-items-center no-gutters mb-4 mb-lg-5">
+				<div class="col-xl-8 col-lg-7">
+					<img class="img-fluid mb-3 mb-lg-0"
+						src="resources/bootstrap/assets/img/medications-magnifying-glass.jpg"
+						alt="" />
+				</div>
+				<div class="col-xl-4 col-lg-5">
+					<div class="featured-text text-center text-lg-left">
+						<h4>Shoreline</h4>
+						<p class="text-black-50 mb-0">Grayscale is open source and MIT
+							licensed. This means you can use it for any project - even
+							commercial projects! Download it, customize it, and publish your
+							website!</p>
 					</div>
 				</div>
+			</div>
 			<!-- Project One Row-->
-				<div class="row justify-content-center no-gutters mb-5 mb-lg-0">
-					<div class="col-lg-6"><img class="img-fluid" src="resources/bootstrap/assets/img/demo-image-01.jpg" alt="" /></div>
-					<div class="col-lg-6">
-						<div class="bg-black text-center h-100 project">
-							<div class="d-flex h-100">
-								<div class="project-text w-100 my-auto text-center text-lg-left">
-									<h4 class="text-white">Misty</h4>
-									<p class="mb-0 text-gray-80">An example of where you can put an image of a project, or anything else, along with a description.</p>
-									<hr class="d-none d-lg-block mb-0 ml-0" />
-								</div>
-							</div>
-						</div>
-					</div>
+			<div class="row justify-content-center no-gutters mb-5 mb-lg-0">
+				<div class="col-lg-6">
+					<img class="img-fluid"
+						src="resources/bootstrap/assets/img/demo-image-01.jpg" alt="" />
 				</div>
-				<!-- Project Two Row-->
-				<div class="row justify-content-center no-gutters">
-					<div class="col-lg-6"><img class="img-fluid" src="resources/bootstrap/assets/img/demo-image-02.jpg" alt="" /></div>
-					<div class="col-lg-6 order-lg-first">
-						<div class="bg-black text-center h-100 project">
-							<div class="d-flex h-100">
-								<div class="project-text w-100 my-auto text-center text-lg-right">
-									<h4 class="text-white">Mountains</h4>
-									<p class="mb-0 text-white-50">Another example of a project with its respective description. These sections work well responsively as well, try this theme on a small screen!</p>
-									<hr class="d-none d-lg-block mb-0 mr-0" />
-								</div>
+				<div class="col-lg-6">
+					<div class="bg-black text-center h-100 project">
+						<div class="d-flex h-100">
+							<div class="project-text w-100 my-auto text-center text-lg-left">
+								<h4 class="text-white">Misty</h4>
+								<p class="mb-0 text-gray-80">An example of where you can put
+									an image of a project, or anything else, along with a
+									description.</p>
+								<hr class="d-none d-lg-block mb-0 ml-0" />
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-		</section>
-		<!-- Signup-->
-		<section class="signup-section" id="shape">
+			<!-- Project Two Row-->
+			<div class="row justify-content-center no-gutters">
+				<div class="col-lg-6">
+					<img class="img-fluid"
+						src="resources/bootstrap/assets/img/demo-image-02.jpg" alt="" />
+				</div>
+				<div class="col-lg-6 order-lg-first">
+					<div class="bg-black text-center h-100 project">
+						<div class="d-flex h-100">
+							<div class="project-text w-100 my-auto text-center text-lg-right">
+								<h4 class="text-white">Mountains</h4>
+								<p class="mb-0 text-white-50">Another example of a project
+									with its respective description. These sections work well
+									responsively as well, try this theme on a small screen!</p>
+								<hr class="d-none d-lg-block mb-0 mr-0" />
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- Signup-->
+	<section class="signup-section" id="shape">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-10 col-lg-8 mx-auto text-center">
 					<i class="far fa-paper-plane fa-2x mb-2 text-white"></i>
 					<h2 class="text-white mb-5">Subscribe to receive updates!</h2>
 					<form class="form-inline d-flex">
-						<input class="form-control flex-fill mr-0 mr-sm-2 mb-3 mb-sm-0" id="inputEmail" type="email" placeholder="Enter email address..." />
+						<input class="form-control flex-fill mr-0 mr-sm-2 mb-3 mb-sm-0"
+							id="inputEmail" type="email" placeholder="Enter email address..." />
 						<button class="btn btn-primary mx-auto" type="submit">Subscribe</button>
 					</form>
 				</div>
 			</div>
 		</div>
-		</section>
-		<!-- Contact-->
-		<section class="contact-section bg-black" id="contact">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-4 mb-3 mb-md-0">
-						<div class="card py-4 h-100">
-							<div class="card-body text-center">
-								<i class="fas fa-map-marked-alt text-primary mb-2"></i>
-								<h4 class="text-uppercase m-0">Address</h4>
-								<hr class="my-4" />
-								<div class="small text-black-50">4923 Market Street, Orlando FL</div>
-							</div>
+	</section>
+	<!-- Contact-->
+	<section class="contact-section bg-black" id="contact">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-4 mb-3 mb-md-0">
+					<div class="card py-4 h-100">
+						<div class="card-body text-center">
+							<i class="fas fa-map-marked-alt text-primary mb-2"></i>
+							<h4 class="text-uppercase m-0">Address</h4>
+							<hr class="my-4" />
+							<div class="small text-black-50">4923 Market Street,
+								Orlando FL</div>
 						</div>
 					</div>
-					<div class="col-md-4 mb-3 mb-md-0">
-						<div class="card py-4 h-100">
-							<div class="card-body text-center">
-								<i class="fas fa-envelope text-primary mb-2"></i>
-								<h4 class="text-uppercase m-0">Email</h4>
-								<hr class="my-4" />
-								<div class="small text-black-50"><a href="#!">hello@yourdomain.com</a></div>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-4 mb-3 mb-md-0">
-						<div class="card py-4 h-100">
-							<div class="card-body text-center">
-								<i class="fas fa-mobile-alt text-primary mb-2"></i>
-								<h4 class="text-uppercase m-0">Phone</h4>
-								<hr class="my-4" />
-								<div class="small text-black-50">+1 (555) 902-8832</div>
+				</div>
+				<div class="col-md-4 mb-3 mb-md-0">
+					<div class="card py-4 h-100">
+						<div class="card-body text-center">
+							<i class="fas fa-envelope text-primary mb-2"></i>
+							<h4 class="text-uppercase m-0">Email</h4>
+							<hr class="my-4" />
+							<div class="small text-black-50">
+								<a href="#!">hello@yourdomain.com</a>
 							</div>
 						</div>
 					</div>
 				</div>
-				<div class="social d-flex justify-content-center">
-					<a class="mx-2" href="#!"><i class="fab fa-twitter"></i></a>
-					<a class="mx-2" href="#!"><i class="fab fa-facebook-f"></i></a>
-					<a class="mx-2" href="#!"><i class="fab fa-github"></i></a>
+				<div class="col-md-4 mb-3 mb-md-0">
+					<div class="card py-4 h-100">
+						<div class="card-body text-center">
+							<i class="fas fa-mobile-alt text-primary mb-2"></i>
+							<h4 class="text-uppercase m-0">Phone</h4>
+							<hr class="my-4" />
+							<div class="small text-black-50">+1 (555) 902-8832</div>
+						</div>
+					</div>
 				</div>
 			</div>
-		</section>
-	</div>
+			<div class="social d-flex justify-content-center">
+				<a class="mx-2" href="#!"><i class="fab fa-twitter"></i></a> <a
+					class="mx-2" href="#!"><i class="fab fa-facebook-f"></i></a> <a
+					class="mx-2" href="#!"><i class="fab fa-github"></i></a>
+			</div>
+		</div>
+	</section>
+</div>
 </html>

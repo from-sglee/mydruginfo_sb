@@ -30,7 +30,7 @@ public class SearchController {
 		PrintWriter out = response.getWriter();
 		ModelAndView mv = new ModelAndView();
 		
-		if (vo.getAll_search() == false && vo.getATC_code_search() == false && vo.getCommon_name_code_search() == false
+		if (vo.getATC_code_search() == false && vo.getCommon_name_code_search() == false
 				&& vo.getCompany_name_search() == false && vo.getDrug_name_search() == false
 				&& vo.getProduct_code_search() == false) {
 			mv.setViewName("page/home");
@@ -38,17 +38,18 @@ public class SearchController {
 			out.flush();
 		}
 
-		else if (vo.getKeyword() == null) {
-			mv.setViewName("/pagehome");
+		else if (vo.getSearchText() == null) {
+			mv.setViewName("page/home");
 			out.println("<script>alert('검색어를 입력해주세요.')</script>");
 			out.flush();
 		}
 
 		else {
 			List<StandardCode> sCodeList = searchservice.getSearch(vo);
-			mv.setViewName("home");
+			mv.setViewName("page/home");
 			mv.addObject("message", "sCodeList here");
 			mv.addObject("sCodeList",sCodeList);
+			System.out.println(sCodeList);
 		}
 
 		return mv;

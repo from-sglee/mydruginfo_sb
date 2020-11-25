@@ -87,3 +87,8 @@
 		letter-spacing: 0.15rem;
 		border: 0;
 	}
+	#searchForm #searchText {
+		padding: 1.05rem 1.05rem; 
+		height: auto; 
+		width: 301px;
+	}

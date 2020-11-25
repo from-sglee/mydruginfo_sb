@@ -2,25 +2,23 @@ package com.mydruginfo.model;
 
 
 public class SearchVO {
-	private boolean all_search;
-	private boolean drug_name_search;
-	private boolean company_name_search;
-	private boolean ATC_code_search;
-	private boolean product_code_search;
-	private boolean common_name_code_search;
+
+	boolean drug_name_search;
+	boolean company_name_search;
+	boolean ATC_code_search;
+	boolean product_code_search;
+	boolean common_name_code_search;
 	
-	private String keyword;
+	String searchText;
 	
 	
 
 	
-	public boolean getAll_search() {
-		return all_search;
+	public SearchVO() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 
-	public void setAll_search(boolean all_search) {
-		this.all_search = all_search;
-	}
 
 	public boolean getDrug_name_search() {
 		return drug_name_search;
@@ -62,12 +60,12 @@ public class SearchVO {
 		this.common_name_code_search = common_name_code_search;
 	}
 
-	public String getKeyword() {
-		return keyword;
+	public String getSearchText() {
+		return searchText;
 	}
 	
-	public void setKeyword(String keyword) {
-		this.keyword = keyword;
+	public void setSearchText(String searchText) {
+		this.searchText = searchText;
 	}
 
 }
