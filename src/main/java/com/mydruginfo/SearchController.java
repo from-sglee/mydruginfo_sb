@@ -1,7 +1,9 @@
 package com.mydruginfo;
 
 import java.io.PrintWriter;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -45,11 +47,12 @@ public class SearchController {
 		}
 
 		else {
+			ModelAndView modelAndView = new ModelAndView();
+			Map<String, Object> map = new HashMap<>();
 			List<StandardCode> sCodeList = searchservice.getSearch(vo);
-			mv.setViewName("page/home");
+			mv.setViewName("page/searchPage");
 			mv.addObject("message", "sCodeList here");
 			mv.addObject("sCodeList",sCodeList);
-			System.out.println(sCodeList);
 		}
 
 		return mv;

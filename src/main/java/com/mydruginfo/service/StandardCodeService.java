@@ -27,6 +27,7 @@ public class StandardCodeService {
     public List<StandardCode> getAllStandardCode(int pageNo, int perPage) {
         return sMapper.selectAllStandardCode(pageNo, perPage);
     }
+    
 
     public List<StandardCode> getStandardCodeByCompanyName(String companyName) {
         return sMapper.selectStandardCodeByCompanyName(companyName);
