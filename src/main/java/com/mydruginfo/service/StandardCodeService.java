@@ -23,6 +23,7 @@ public class StandardCodeService {
     public List<StandardCode> getAllStandardCode() {
         return standardCodeMapper.selectAllStandardCode();
     }
+    
 
     public List<StandardCode> selectStandardCodeByCompanyName(String companyName) {
         return standardCodeMapper.selectStandardCodeByCompanyName(companyName);

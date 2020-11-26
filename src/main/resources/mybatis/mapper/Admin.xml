@@ -16,4 +16,21 @@
       UPDATE tb_admin SET (admin = #{admin_pw}, admin_name=#{admin_name}, admin_email=#{admin_email}, admin_type=#{admin_type})
     </update>
 
+	<select id="AllStandardCode" resultType="com.mydruginfo.model.StandardCode">
+        SELECT drug_name_kr
+							, company_name
+							, standard_code
+							, atc_code
+          FROM tb_standard_code
+		  LIMIT #{pageSize} OFFSET #{startIndex}
+    </select>
+
+	<select id="findAllCnt" resultType="int">
+        SELECT 
+				count(*)
+          FROM tb_standard_code
+    </select>
+	
+	
+
 </mapper>

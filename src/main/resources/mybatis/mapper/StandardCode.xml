@@ -57,9 +57,9 @@
 							, specialcare_type
 							, reading_equipment
 							, reg_date
-          FROM CITY
-         WHERE company_name = #{cName}
+          FROM tb_standard_code
     </select>
+
     
 		<select id="selectStandardCodeByCompanyName" resultType="com.mydruginfo.model.StandardCode">
         SELECT drug_name_kr
@@ -134,5 +134,6 @@
 							#{specialcare_type},
 							#{reading_equipment})
     </insert>
+
 
 </mapper>

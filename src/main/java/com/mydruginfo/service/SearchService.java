@@ -29,8 +29,6 @@ public class SearchService {
 			return list;
 		}
 		else if (vo.getCompany_name_search()) {
-			String searchText = vo.getSearchText();
-			System.out.println(searchMapper.getSearch("company_name", searchText));
 			List<StandardCode> list = searchMapper.getSearch("company_name", vo.getSearchText());
 			return list;
 		}
