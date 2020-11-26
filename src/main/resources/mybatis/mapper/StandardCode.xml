@@ -1,138 +1,82 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.mydruginfo.repository.StandardCodeMapper">
 
-    <select id="selectStandardCodeBySCode" resultType="com.mydruginfo.model.StandardCode">
-        SELECT 	drug_name_kr
-							, company_name
-							, packing_capacity
-							, quantity
-							, formulation_type
-							, package_type
-							, item_code
-							, date_authorization
-							, drug_type
-							, representative_code
-							, standard_code
-							, product_code
-							, common_name_code
-							, memo
-							, cancellation_date
-							, effective_date
-							, end_date
-							, serialnumber_yn
-							, memo_serialnumber
-							, atc_code
-							, specialcare_type
-							, reading_equipment
-							, reg_date
-          FROM tb_standard_code
-         WHERE standard_code = #{sCode, jdbcType=INTEGER}
-    </select>
+	<select id="selectStandardCodeBySCode" resultType="com.mydruginfo.model.StandardCode">
+		SELECT (ROW_NUMBER() OVER()) AS seq, drug_name_kr, company_name, packing_capacity, quantity, formulation_type
+				, package_type, item_code, date_authorization, drug_type, representative_code
+				, standard_code, product_code, common_name_code, memo, cancellation_date
+				, effective_date, end_date, serialnumber_yn, memo_serialnumber, atc_code
+				, specialcare_type, reading_equipment, reg_date
+		FROM tb_standard_code
+		WHERE standard_code = #{sCode, jdbcType=INTEGER}
+	</select>
+	
+	<select id="selectCountAllStandardCode" resultType="integer">
+		SELECT COUNT(*)
+		FROM tb_standard_code
+	</select>
+	
+	<select id="selectAllStandardCode" resultType="com.mydruginfo.model.StandardCode">
+		SELECT (ROW_NUMBER() OVER()) AS seq, drug_name_kr, company_name, packing_capacity, quantity, formulation_type
+				, package_type, item_code, date_authorization, drug_type, representative_code
+				, standard_code, product_code, common_name_code, memo, cancellation_date
+				, effective_date, end_date, serialnumber_yn, memo_serialnumber, atc_code
+				, specialcare_type, reading_equipment, reg_date
+		FROM tb_standard_code
+		LIMIT ${perPage} OFFSET (${pageNo} - 1) * ${perPage}
+	</select>
 
-    <select id="selectAllStandardCode" resultType="com.mydruginfo.model.StandardCode">
-        SELECT drug_name_kr
-							, company_name
-							, packing_capacity
-							, quantity
-							, formulation_type
-							, package_type
-							, item_code
-							, date_authorization
-							, drug_type
-							, representative_code
-							, standard_code
-							, product_code
-							, common_name_code
-							, memo
-							, cancellation_date
-							, effective_date
-							, end_date
-							, serialnumber_yn
-							, memo_serialnumber
-							, atc_code
-							, specialcare_type
-							, reading_equipment
-							, reg_date
-          FROM CITY
-         WHERE company_name = #{cName}
-    </select>
-    
-		<select id="selectStandardCodeByCompanyName" resultType="com.mydruginfo.model.StandardCode">
-        SELECT drug_name_kr
-							, company_name
-							, packing_capacity
-							, quantity
-							, formulation_type
-							, package_type
-							, item_code
-							, date_authorization
-							, drug_type
-							, representative_code
-							, standard_code
-							, product_code
-							, common_name_code
-							, memo
-							, cancellation_date
-							, effective_date
-							, end_date
-							, serialnumber_yn
-							, memo_serialnumber
-							, atc_code
-							, specialcare_type
-							, reading_equipment
-							, reg_date
-          FROM CITY
-    </select>
-    
-    <insert id="insertStandardCode" parameterType="com.mydruginfo.model.StandardCode">
-      INSERT INTO CITY (drug_name_kr
-							, company_name
-							, packing_capacity
-							, quantity
-							, formulation_type
-							, package_type
-							, item_code
-							, date_authorization
-							, drug_type
-							, representative_code
-							, standard_code
-							, product_code
-							, common_name_code
-							, memo
-							, cancellation_date
-							, effective_date
-							, end_date
-							, serialnumber_yn
-							, memo_serialnumber
-							, atc_code
-							, specialcare_type
-							, reading_equipment)
-      VALUES (#{drug_name_kr},
-							#{company_name},
-							#{packing_capacity},
-							#{quantity},
-							#{formulation_type},
-							#{package_type},
-							#{item_code},
-							#{date_authorization},
-							#{drug_type},
-							#{representative_code},
-							#{standard_code},
-							#{product_code},
-							#{common_name_code},
-							#{memo},
-							#{cancellation_date},
-							#{effective_date},
-							#{end_date},
-							#{serialnumber_yn},
-							#{memo_serialnumber},
-							#{atc_code},
-							#{specialcare_type},
-							#{reading_equipment})
-    </insert>
+	<select id="selectCountByCompanyName" resultType="integer">
+		SELECT COUNT(*)
+		FROM tb_standard_code
+		WHERE company_neme= ${companyName}
+	</select>
+	
+	<select id="selectStandardCodeByCompanyName" resultType="com.mydruginfo.model.StandardCode">
+		SELECT (ROW_NUMBER() OVER()) AS seq, drug_name_kr, company_name, packing_capacity, quantity, formulation_type
+				, package_type, item_code, date_authorization, drug_type, representative_code
+				, standard_code, product_code, common_name_code, memo, cancellation_date
+				, effective_date, end_date, serialnumber_yn, memo_serialnumber, atc_code
+				, specialcare_type, reading_equipment, reg_date
+		FROM tb_standard_code
+		WHERE company_neme= ${companyName}
+		LIMIT ${perPage} OFFSET (${pageNo} - 1) * ${perPage}
+	</select>
+	
+	<select id="selectCountLikeCName" resultType="integer">
+		SELECT COUNT(*)
+		FROM tb_standard_code
+		WHERE ${colName} LIKE CONCAT('%','${searchVal}','%')
+	</select>
+	
+	<select id="selectStandardCodeLikeCName" resultType="com.mydruginfo.model.StandardCode">
+		SELECT (ROW_NUMBER() OVER()) AS seq, drug_name_kr, company_name, packing_capacity, quantity, formulation_type
+				, package_type, item_code, date_authorization, drug_type, representative_code
+				, standard_code, product_code, common_name_code, memo, cancellation_date
+				, effective_date, end_date, serialnumber_yn, memo_serialnumber, atc_code
+				, specialcare_type, reading_equipment, reg_date
+		FROM tb_standard_code
+		WHERE ${colName} LIKE CONCAT('%','${searchVal}','%')
+		LIMIT ${pageSize} OFFSET (${pageNo} - 1) * ${pageSize}
+	</select>
+
+	<insert id="insertStandardCode" parameterType="com.mydruginfo.model.StandardCode">
+		INSERT INTO tb_standard_code (
+					drug_name_kr, company_name, packing_capacity, quantity, formulation_type
+				, package_type, item_code, date_authorization, drug_type, representative_code
+				, standard_code, product_code, common_name_code, memo, cancellation_date
+				, effective_date, end_date, serialnumber_yn, memo_serialnumber, atc_code
+				, specialcare_type, reading_equipment)
+		VALUES (
+					#{drug_name_kr}, #{company_name}, #{packing_capacity}, #{quantity}, #{formulation_type},
+					#{package_type}, #{item_code}, #{date_authorization}, #{drug_type}, #{representative_code},
+					#{standard_code}, #{product_code}, #{common_name_code}, #{memo},#{cancellation_date},
+					#{effective_date}, #{end_date}, #{serialnumber_yn}, #{memo_serialnumber}, #{atc_code},
+					#{specialcare_type}, #{reading_equipment})
+	</insert>
 
 </mapper>

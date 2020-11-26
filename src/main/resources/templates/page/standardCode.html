@@ -11,89 +11,88 @@
 					<div class="page-header">
 						<h2 class="text-secondary mb-4">Detail Information :: Standard Code</h2>
 					</div>
-					<div class="col-md-12 mt-5">
-						<table class="table text-dark table-detail">
+						<table th:unless="${#lists.isEmpty(data.sCode)}" class="table text-dark table-detail">
 							<tbody>
 								<tr>
 									<th>standardCode</th>
-									<td th:text="${data.sCodeVO.standard_code}"></td>
+									<td th:text="${data.sCode.standard_code}"></td>
 									<td rowspan="4" colspan="2" class="image"><img src=""></td>
 								</tr>
 								<tr>
 									<th>Drug Name(kr)</th>
-									<td th:text="${data.sCodeVO.drug_name_kr}"></td>
+									<td th:text="${data.sCode.drug_name_kr}"></td>
 								</tr>
 								<tr>
 									<th>Company Name</th>
-									<td th:text="${data.sCodeVO.company_name}"></td>
+									<td th:text="${data.sCode.company_name}"></td>
 								</tr>
 								<tr>
 									<th>ATC Code</th>
-									<td th:text="${data.sCodeVO.atc_code}"></td>
+									<td th:text="${data.sCode.atc_code}"></td>
 								</tr>
 								<tr>
 									<th>Pharma standard</th>
-									<td th:text="${data.sCodeVO.pharma_standard}"></td>
+									<td th:text="${data.sCode.pharma_standard}"></td>
 									<th>Quantity</th>
-									<td th:text="${data.sCodeVO.quantity}"></td>
+									<td th:text="${data.sCode.quantity}"></td>
 								</tr>
 								<tr>
 									<th>Formulation type</th>
-									<td th:text="${data.sCodeVO.formulation_type}"></td>
+									<td th:text="${data.sCode.formulation_type}"></td>
 									<th>Package type</th>
-									<td th:text="${data.sCodeVO.package_type}"></td>
+									<td th:text="${data.sCode.package_type}"></td>
 								</tr>
 								<tr>
 									<th>Item code</th>
-									<td th:text="${data.sCodeVO.item_code}"></td>
+									<td th:text="${data.sCode.item_code}"></td>
 									<th>Date authorization</th>
-									<td th:text="${data.sCodeVO.date_authorization}"></td>
+									<td th:text="${data.sCode.date_authorization}"></td>
 								</tr>
 								<tr>
 									<th>Prescription required</th>
-									<td th:text="${data.sCodeVO.drug_type}"></td>
+									<td th:text="${data.sCode.drug_type}"></td>
 									<th>Representative code</th>
-									<td th:text="${data.sCodeVO.representative_code}"></td>
+									<td th:text="${data.sCode.representative_code}"></td>
 								</tr>
 								<tr>
 									<th>Standard code</th>
-									<td th:text="${data.sCodeVO.standard_code}"></td>
+									<td th:text="${data.sCode.standard_code}"></td>
 									<th>Product code</th>
-									<td th:text="${data.sCodeVO.product_code}"></td>
+									<td th:text="${data.sCode.product_code}"></td>
 								</tr>
 								<tr>
 									<th>Common name code</th>
-									<td th:text="${data.sCodeVO.common_name_code}"></td>
+									<td th:text="${data.sCode.common_name_code}"></td>
 									<th>Cancellation date</th>
-									<td th:text="${data.sCodeVO.cancellation_date}"></td>
+									<td th:text="${data.sCode.cancellation_date}"></td>
 								</tr>
 								<tr>
 									<th>Effective date</th>
-									<td th:text="${data.sCodeVO.effective_date}"></td>
+									<td th:text="${data.sCode.effective_date}"></td>
 									<th>End date</th>
-									<td th:text="${data.sCodeVO.end_date}"></td>
+									<td th:text="${data.sCode.end_date}"></td>
 								</tr>
 								<tr>
 									<th>Atc code</th>
-									<td th:text="${data.sCodeVO.atc_code}"></td>
+									<td th:text="${data.sCode.atc_code}"></td>
 									<th>Specialcare type</th>
-									<td th:text="${data.sCodeVO.specialcare_type}"></td>
+									<td th:text="${data.sCode.specialcare_type}"></td>
 								</tr>
 								<tr>
 									<th>Reading equipment</th>
-									<td th:text="${data.sCodeVO.reading_equipment}"></td>
+									<td th:text="${data.sCode.reading_equipment}"></td>
 									<th colspan="2">Memo serialnumber</th>
 								</tr>
 								<tr>
 									<th>Serialnumber yn</th>
-									<td th:text="${data.sCodeVO.serialnumber_yn}"></td>
-									<td colspan="2" th:text="${data.sCodeVO.memo_serialnumber}"></td>
+									<td th:text="${data.sCode.serialnumber_yn}"></td>
+									<td colspan="2" th:text="${data.sCode.memo_serialnumber}"></td>
 								</tr>
 								<tr>
 									<th colspan="4">Memo</th>
 								</tr>
 								<tr>
-									<td colspan="4" th:text="${data.sCodeVO.memo}"></td>
+									<td colspan="4" th:text="${data.sCode.memo}"></td>
 								</tr>
 							</tbody>
 						</table>

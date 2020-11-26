@@ -1,13 +1,14 @@
 package com.mydruginfo.model;
 
 public class StandardCode {
+	int seq;						// not null ; auto_increment
 	String drug_name_kr;			// not null
 	String company_name;			// not null
 	String packing_capacity;
 	int quantity;
 	String formulation_type;
 	String package_type;
-	int item_code;				// not null
+	int item_code;					// not null
 	String date_authorization;
 	String drug_type;
 	Long representative_code;		// not null
@@ -31,13 +32,14 @@ public class StandardCode {
 		// TODO Auto-generated constructor stub
 	}
 
-	public StandardCode(String drug_name_kr, String company_name, String packing_capacity, int quantity,
+	public StandardCode(int seq, String drug_name_kr, String company_name, String packing_capacity, int quantity,
 			String formulation_type, String package_type, int item_code, String date_authorization, String drug_type,
 			Long representative_code, Long standard_code, int product_code, String common_name_code, String memo,
 			String cancellation_date, String effective_date, String end_date, String serialnumber_yn,
 			String memo_serialnumber, String atc_code, String specialcare_type, String reading_equipment,
 			String image_url, String reg_date) {
 		super();
+		this.seq = seq;
 		this.drug_name_kr = drug_name_kr;
 		this.company_name = company_name;
 		this.packing_capacity = packing_capacity;
@@ -64,6 +66,14 @@ public class StandardCode {
 		this.reg_date = reg_date;
 	}
 
+	public int getSeq() {
+		return seq;
+	}
+
+	public void setSeq(int seq) {
+		this.seq = seq;
+	}
+	
 	public String getDrug_name_kr() {
 		return drug_name_kr;
 	}
@@ -258,7 +268,7 @@ public class StandardCode {
 
 	@Override
 	public String toString() {
-		return "StandardCode [drug_name_kr=" + drug_name_kr + ", company_name=" + company_name + ", packing_capacity="
+		return "StandardCode [seq=" + seq + ",drug_name_kr=" + drug_name_kr + ", company_name=" + company_name + ", packing_capacity="
 				+ packing_capacity + ", quantity=" + quantity + ", formulation_type=" + formulation_type
 				+ ", package_type=" + package_type + ", item_code=" + item_code + ", date_authorization="
 				+ date_authorization + ", drug_type=" + drug_type + ", representative_code=" + representative_code

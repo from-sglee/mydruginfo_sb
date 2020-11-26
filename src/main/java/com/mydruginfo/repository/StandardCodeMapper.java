@@ -9,8 +9,10 @@ import java.util.List;
 @Mapper
 public interface StandardCodeMapper {
 	StandardCode selectStandardCodeBySCode(long standardCode);
-    List<StandardCode> selectAllStandardCode();
-    List<StandardCode> selectStandardCodeByCompanyName(String companyName);
-    void insertStandardCode(StandardCode standardCode);
+	int selectCountAllStandardCode();
+	List<StandardCode> selectAllStandardCode(int pageNo, int perPage);
+	List<StandardCode> selectStandardCodeByCompanyName(String companyName);
+	void insertStandardCode(StandardCode standardCode);
+	List<StandardCode> selectStandardCodeLikeCName(String colName, String searchVal);
 
 }
