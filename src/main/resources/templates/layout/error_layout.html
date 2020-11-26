@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+
+<html lagn="ko" 
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+		<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+		<title>MyDrugInfo </title>
+		<!-- config fragment  -->
+		<th:block th:replace="fragment/error :: errorFragment" ></th:block>
+	</head>
+	
+	<body id="page-top" role="document">
+		<!-- content fragment (w/ layout) -->
+		<th:block layout:fragment="content"></th:block>
+		
+	</body>
+
+</html>
