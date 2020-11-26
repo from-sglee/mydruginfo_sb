@@ -47,13 +47,13 @@
 		LIMIT ${perPage} OFFSET (${pageNo} - 1) * ${perPage}
 	</select>
 	
-	<select id="selectCountLikeCName" resultType="integer">
+	<select id="selectCountLikeColumn" resultType="integer">
 		SELECT COUNT(*)
 		FROM tb_standard_code
 		WHERE ${colName} LIKE CONCAT('%','${searchVal}','%')
 	</select>
 	
-	<select id="selectStandardCodeLikeCName" resultType="com.mydruginfo.model.StandardCode">
+	<select id="selectStandardCodeLikeColumn" resultType="com.mydruginfo.model.StandardCode">
 		SELECT (ROW_NUMBER() OVER()) AS seq, drug_name_kr, company_name, packing_capacity, quantity, formulation_type
 				, package_type, item_code, date_authorization, drug_type, representative_code
 				, standard_code, product_code, common_name_code, memo, cancellation_date
@@ -61,7 +61,7 @@
 				, specialcare_type, reading_equipment, reg_date
 		FROM tb_standard_code
 		WHERE ${colName} LIKE CONCAT('%','${searchVal}','%')
-		LIMIT ${pageSize} OFFSET (${pageNo} - 1) * ${pageSize}
+		LIMIT ${pageSize} OFFSET ${startIndex}
 	</select>
 
 	<insert id="insertStandardCode" parameterType="com.mydruginfo.model.StandardCode">

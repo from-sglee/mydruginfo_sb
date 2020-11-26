@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.mydruginfo.model.StandardCode;
+import com.mydruginfo.paging.Pagination;
 import com.mydruginfo.service.StandardCodeService;
 
 @Controller
@@ -48,15 +49,32 @@ public class StandardCodeController {
 
 	@ResponseBody
 	@RequestMapping("/getSCodeSearch")
-	public ModelAndView getSCodeSearch(@RequestParam String type, String searchTxt) throws Exception{
+	public ModelAndView getSCodeSearch(@RequestParam  String type, String searchTxt, String page) throws Exception{
 		ModelAndView modelAndView = new ModelAndView();
 		Map<String, Object> map = new HashMap<>();
+		int intPage = 1;
 		
-		List<StandardCode> sCodeList = service.getStandardCodeLikeCName(type, searchTxt);
-		if(sCodeList.size()>0) {
-			map.put("function", "getScodeLikeCName");
-			map.put("list", sCodeList);
-			modelAndView.addObject("data", map);
+		try{
+			if(!page.isEmpty()) {
+				intPage = Integer.parseInt(page);
+			}
+		}catch (Exception e) {
+			//
+		}
+		int totalListCnt = service.getCountLikeColumn(type, searchTxt);
+		if(totalListCnt > 0) {
+			Pagination pagination = new Pagination(totalListCnt, intPage);
+			int startIndex = pagination.getStartIndex();
+			int pageSize = pagination.getPageSize();
+			List<StandardCode> sCodeList = service.getStandardCodeLikeColumn(type, searchTxt, startIndex, pageSize);
+			System.out.println(">>sCodeList.size = " + sCodeList.size());
+			System.out.println(" >>pagination.getStartPage = " + pagination.getStartPage());
+			System.out.println(" >>pagination.getEndPage = " + pagination.getEndPage());
+			System.out.println("  >>pagination.getPage = " + pagination.getPage());
+			modelAndView.addObject("type", type);
+			modelAndView.addObject("searchTxt", searchTxt);
+			modelAndView.addObject("sCodeList", sCodeList);
+			modelAndView.addObject("pagination", pagination);
 			modelAndView.setViewName("page/standardCodeList");
 		}else {
 			map.put("function", "getScodeLikeCName");

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layout/default_layout">
+
+	<div layout:fragment="content">
+		<section class="detail-section" id="detailStandardCode">
+			<div class="container">
+				<div class="row">
+					<div class="page-header">
+						<h2 class="text-secondary mb-4">Drug List</h2>
+					</div>
+					<div class="col-md-12">
+						<table class="table text-dark table-detail">
+							<tbody>
+								<tr>
+									<td>No.</td>
+									<td>Standard Code</td>
+									<td>Drug Name(kr)</td>
+									<td>Company Name</td>
+									<td>Packing Capacity</td>
+									<td>Drug Type</td>
+								</tr>
+								<tr th:each="list : ${sCodeList}">
+									<td th:text="${list.seq}"></td>
+									<td th:text="${list.standard_code}"></td>
+									<td th:text="${list.drug_name_kr}"></td>
+									<td th:text="${list.packing_capacity}"></td>
+									<td th:text="${list.company_name}"></td>
+									<td th:text="${list.drug_type}"></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				<th:block th:if="${pagination.startPage<pagination.endPage}">
+					<div class="pagination d-flex justify-content-center col-md-12" align="center">
+						<nav class="navbar navbar-dark" aria-label="Page navigation">
+							<ul class="pagination navbar-text">
+								<li class="page-item">
+									<a class="page-link bg-dark" th:href="@{/getSCodeSearch?type={type}&searchTxt={searchTxt}&page=1 (type=${type}, searchTxt=${searchTxt})}">&lt;&lt;</a>
+								</li>
+								<li th:class="${pagination.block==1} ? 'page-item disabled':'page-item'">
+									<a class="page-link bg-dark" th:href="@{/getSCodeSearch?type={type}&searchTxt={searchTxt}&page={page} (type=${type}, searchTxt=${searchTxt}, page = ${pagination.prevBlock})}" aria-label="Previous">&lt;</a>
+								</li>
+							<th:block th:with="start = ${pagination.startPage}, end = ${pagination.endPage}">
+								<li th:each="pageButton : ${#numbers.sequence(start, end)}" th:class="${pageButton == pagination.page} ? 'page-item disabled':'page-item'">
+									<a class="page-link bg-dark" th:href="@{/getSCodeSearch?type={type}&searchTxt={searchTxt}&page={page} (type=${type}, searchTxt=${searchTxt}, page = ${pageButton})}" th:text=${pageButton}></a>
+								</li>
+							</th:block>
+								<li th:class="${pagination.block==pagination.TotalBlockCnt} ? 'page-item disabled': 'page-item'">
+									<a class="page-link bg-dark" th:href="@{/getSCodeSearch?type={type}&searchTxt={searchTxt}&page={page} (type=${type}, searchTxt=${searchTxt}, page = ${pagination.nextBlock})}" aria-label="Next">&gt;</a>
+								</li>
+								<li class="page-item">
+									<a class="page-link bg-dark" th:href="@{/getSCodeSearch?type={type}&searchTxt={searchTxt}&page={page} (type=${type}, searchTxt=${searchTxt}, page = ${pagination.totalPageCnt})}" aria-label="Last">&gt;&gt;</a>
+								</li>
+							</ul>
+						</nav>
+					</div>
+				</th:block>
+				</div>
+			</div>
+		</section>
+	</div>
+</html>

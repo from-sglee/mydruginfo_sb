@@ -11,9 +11,10 @@ import java.util.List;
 public interface StandardCodeMapper {
 	StandardCode selectStandardCodeBySCode(long standardCode);
 	int selectCountAllStandardCode();
+	int selectCountLikeColumn(String colName, String searchVal);
+	List<StandardCode> selectStandardCodeLikeColumn(String colName, String searchVal, int startIndex, int pageSize);
 	List<StandardCode> selectAllStandardCode(int pageNo, int perPage);
 	List<StandardCode> selectStandardCodeByCompanyName(String companyName);
 	void insertStandardCode(StandardCode standardCode);
-	List<StandardCode> selectStandardCodeLikeCName(String colName, String searchVal);
 
 }

@@ -23,6 +23,13 @@ public class StandardCodeService {
     public int getCountAllStandardCode() {
         return sMapper.selectCountAllStandardCode();
     }
+
+    public int getCountLikeColumn(String colName, String searchVal) {
+        return sMapper.selectCountLikeColumn(colName, searchVal);
+    }
+    public List<StandardCode> getStandardCodeLikeColumn(String type, String searchTxt, int page, int perPage){
+    	return sMapper.selectStandardCodeLikeColumn(type, searchTxt, page, perPage);
+    }
     
     public List<StandardCode> getAllStandardCode(int pageNo, int perPage) {
         return sMapper.selectAllStandardCode(pageNo, perPage);
@@ -34,9 +41,6 @@ public class StandardCodeService {
     }
     public void addStandardCode(StandardCode standardCode) {
     	sMapper.insertStandardCode(standardCode);
-    }
-    public List<StandardCode> getStandardCodeLikeCName(String colName, String searchVal){
-    	return sMapper.selectStandardCodeLikeCName(colName, searchVal);
     }
 
 }
