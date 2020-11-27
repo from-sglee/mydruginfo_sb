@@ -48,7 +48,7 @@ public class StandardCodeController {
 	}
 
 	@ResponseBody
-	@RequestMapping("/search")
+	@RequestMapping("/getSCodeSearch")
 	public ModelAndView getSCodeSearch(@RequestParam  String type, String searchTxt, @RequestParam(defaultValue="1") String page) throws Exception{
 		ModelAndView modelAndView = new ModelAndView();
 		Map<String, Object> map = new HashMap<>();
