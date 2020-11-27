@@ -48,8 +48,8 @@ public class StandardCodeController {
 	}
 
 	@ResponseBody
-	@RequestMapping("/getSCodeSearch")
-	public ModelAndView getSCodeSearch(@RequestParam  String type, String searchTxt, String page) throws Exception{
+	@RequestMapping("/search")
+	public ModelAndView getSCodeSearch(@RequestParam  String type, String searchTxt, @RequestParam(defaultValue="1") String page) throws Exception{
 		ModelAndView modelAndView = new ModelAndView();
 		Map<String, Object> map = new HashMap<>();
 		int intPage = 1;
@@ -67,10 +67,6 @@ public class StandardCodeController {
 			int startIndex = pagination.getStartIndex();
 			int pageSize = pagination.getPageSize();
 			List<StandardCode> sCodeList = service.getStandardCodeLikeColumn(type, searchTxt, startIndex, pageSize);
-			System.out.println(">>sCodeList.size = " + sCodeList.size());
-			System.out.println(" >>pagination.getStartPage = " + pagination.getStartPage());
-			System.out.println(" >>pagination.getEndPage = " + pagination.getEndPage());
-			System.out.println("  >>pagination.getPage = " + pagination.getPage());
 			modelAndView.addObject("type", type);
 			modelAndView.addObject("searchTxt", searchTxt);
 			modelAndView.addObject("sCodeList", sCodeList);
