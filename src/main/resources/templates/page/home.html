@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	layout:decorator="layout/default_layout">
+	layout:decorate="~{layout/default_layout}">
 
 <!-- css for this page -->
 <!-- <th:block layout:fragment="cssz">
@@ -22,17 +22,6 @@
 				<h1 class="mx-auto my-0 text-uppercase">DrugInfo</h1>
 				<h2 class="text-gray-80 mx-auto mt-2 mb-5">A free website where
 					you can find useful drug information in South Korea.</h2>
-				<form id="searchForm" name="searchForm" class="form-inline d-flex justify-content-center" action="/getSCodeSearch">
-					<div>
-						<input type="radio" name="type" value="drug_name_kr">약품명
-						<input type="radio" name="type" value="company_name">업체명
-						<input type="radio" name="type" value="atc_code">ATC코드
-						<input type="radio" name="type" value="product_code">제품코드
-						<input type="radio" name="type" value="common_name_code">일반명코드
-					</div>
-					<input id="searchTxt" name="searchTxt" type="text" placeholder="Search..." class="form-control d-flex justify-content-around mr-0 mr-sm-2 mb-3 mb-sm-0">
-					<button class="btn btn-primary " type="submit">Search</button>
-				</form>
 			</div>
 		</div>
 	</header>
@@ -59,21 +48,24 @@
 		<div class="container">
 			<!-- Featured Project Row-->
 			<div class="row align-items-center no-gutters mb-4 mb-lg-5">
-				<div class="col-xl-8 col-lg-7">
-					<img class="img-fluid mb-3 mb-lg-0"
-						src="resources/bootstrap/assets/img/medications-magnifying-glass.jpg"
-						alt="" />
-				</div>
-				<div class="col-xl-4 col-lg-5">
-					<div class="featured-text text-center text-lg-left">
-						<h4>Shoreline</h4>
-						<p class="text-black-50 mb-0">Grayscale is open source and MIT
-							licensed. This means you can use it for any project - even
-							commercial projects! Download it, customize it, and publish your
-							website!</p>
-					</div>
+				<div class="col-md-10 col-lg-8 mx-auto text-center">
+					<form id="searchForm" name="searchForm" class="form-inline d-flex justify-content-center" action="/drug-search">
+						
+						<div class="col-lg-10 mx-auto mt-3">
+							<select id="type" name="type" class="form-control mr-3">
+								<option value="">Select Search Type</option>
+								<option value="drug">Drug Name</option>
+								<option value="company">Company Name</option>
+								<option value="atc_code">ATC Code</option>
+								<option value="product_code">Product Code</option>
+							</select>
+							<input id="searchTxt" name="searchTxt" type="text" placeholder="Search..." class="form-control justify-content-around  mb-3 mb-sm-0 mr-3">
+							<button id="searchBtn" type="submit" class="btn btn-primary btn-search">Search</button>
+						</div>
+					</form>
 				</div>
 			</div>
+
 			<!-- Project One Row-->
 			<div class="row justify-content-center no-gutters mb-5 mb-lg-0">
 				<div class="col-lg-6">
