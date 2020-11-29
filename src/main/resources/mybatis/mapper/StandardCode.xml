@@ -10,7 +10,7 @@
 				, package_type, item_code, date_authorization, drug_type, representative_code
 				, standard_code, product_code, common_name_code, memo, cancellation_date
 				, effective_date, end_date, serialnumber_yn, memo_serialnumber, atc_code
-				, specialcare_type, reading_equipment, reg_date
+				, specialcare_type, reading_equipment, image_url, reg_date
 		FROM tb_standard_code
 		WHERE standard_code = #{sCode, jdbcType=INTEGER}
 	</select>
@@ -25,9 +25,9 @@
 				, package_type, item_code, date_authorization, drug_type, representative_code
 				, standard_code, product_code, common_name_code, memo, cancellation_date
 				, effective_date, end_date, serialnumber_yn, memo_serialnumber, atc_code
-				, specialcare_type, reading_equipment, reg_date
+				, specialcare_type, reading_equipment, image_url, reg_date
 		FROM tb_standard_code
-		LIMIT ${perPage} OFFSET (${pageNo} - 1) * ${perPage}
+		LIMIT ${pageSize} OFFSET ${startIndex}
 	</select>
 
 	<select id="selectCountByCompanyName" resultType="integer">
@@ -41,7 +41,7 @@
 				, package_type, item_code, date_authorization, drug_type, representative_code
 				, standard_code, product_code, common_name_code, memo, cancellation_date
 				, effective_date, end_date, serialnumber_yn, memo_serialnumber, atc_code
-				, specialcare_type, reading_equipment, reg_date
+				, specialcare_type, reading_equipment, image_url, reg_date
 		FROM tb_standard_code
 		WHERE company_neme= ${companyName}
 		LIMIT ${perPage} OFFSET (${pageNo} - 1) * ${perPage}
@@ -58,7 +58,7 @@
 				, package_type, item_code, date_authorization, drug_type, representative_code
 				, standard_code, product_code, common_name_code, memo, cancellation_date
 				, effective_date, end_date, serialnumber_yn, memo_serialnumber, atc_code
-				, specialcare_type, reading_equipment, reg_date
+				, specialcare_type, reading_equipment, image_url, reg_date
 		FROM tb_standard_code
 		WHERE ${colName} LIKE CONCAT('%','${searchVal}','%')
 		LIMIT ${pageSize} OFFSET ${startIndex}
@@ -70,13 +70,17 @@
 				, package_type, item_code, date_authorization, drug_type, representative_code
 				, standard_code, product_code, common_name_code, memo, cancellation_date
 				, effective_date, end_date, serialnumber_yn, memo_serialnumber, atc_code
-				, specialcare_type, reading_equipment)
+				, specialcare_type, reading_equipment, image_url)
 		VALUES (
 					#{drug_name_kr}, #{company_name}, #{packing_capacity}, #{quantity}, #{formulation_type},
 					#{package_type}, #{item_code}, #{date_authorization}, #{drug_type}, #{representative_code},
 					#{standard_code}, #{product_code}, #{common_name_code}, #{memo},#{cancellation_date},
 					#{effective_date}, #{end_date}, #{serialnumber_yn}, #{memo_serialnumber}, #{atc_code},
-					#{specialcare_type}, #{reading_equipment})
+					#{specialcare_type}, #{reading_equipment}, #{image_url})
 	</insert>
 
+	<delete id="deleteStandardCode" >
+		DELETE tb_standard_code
+		WHERE standard_code = #{sCode}
+	</delete>
 </mapper>

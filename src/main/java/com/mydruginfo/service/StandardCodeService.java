@@ -27,20 +27,25 @@ public class StandardCodeService {
     public int getCountLikeColumn(String colName, String searchVal) {
         return sMapper.selectCountLikeColumn(colName, searchVal);
     }
-    public List<StandardCode> getStandardCodeLikeColumn(String type, String searchTxt, int page, int perPage){
-    	return sMapper.selectStandardCodeLikeColumn(type, searchTxt, page, perPage);
+    
+    public List<StandardCode> getStandardCodeLikeColumn(String type, String searchTxt, int startIndex, int pageSize){
+    	return sMapper.selectStandardCodeLikeColumn(type, searchTxt, startIndex, pageSize);
     }
     
-    public List<StandardCode> getAllStandardCode(int pageNo, int perPage) {
-        return sMapper.selectAllStandardCode(pageNo, perPage);
+    public List<StandardCode> getAllStandardCode(int startIndex, int pageSize) {
+        return sMapper.selectAllStandardCode(startIndex, pageSize);
     }
     
 
     public List<StandardCode> getStandardCodeByCompanyName(String companyName) {
         return sMapper.selectStandardCodeByCompanyName(companyName);
     }
+    
     public void addStandardCode(StandardCode standardCode) {
     	sMapper.insertStandardCode(standardCode);
+    }
+    public void delStandardCodeBySCode(String sCode) {
+    	sMapper.deleteStandardCode(sCode);
     }
 
 }

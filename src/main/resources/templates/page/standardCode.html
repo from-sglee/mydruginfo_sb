@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	layout:decorator="layout/default_layout">
+	layout:decorate="~{layout/default_layout}">
 
 	<div layout:fragment="content">
 		<section class="detail-section" id="detailStandardCode">
@@ -16,7 +16,7 @@
 								<tr>
 									<th>standardCode</th>
 									<td th:text="${data.sCode.standard_code}"></td>
-									<td rowspan="4" colspan="2" class="image"><img src=""></td>
+									<td rowspan="4" colspan="2" class="image"><img th:src="${data.sCode.image_url} ? ${data.sCode.image_url} : '/image/default.png'"></td>
 								</tr>
 								<tr>
 									<th>Drug Name(kr)</th>
@@ -31,8 +31,8 @@
 									<td th:text="${data.sCode.atc_code}"></td>
 								</tr>
 								<tr>
-									<th>Pharma standard</th>
-									<td th:text="${data.sCode.pharma_standard}"></td>
+									<th>Packing Capacity</th>
+									<td th:text="${data.sCode.packing_capacity}"></td>
 									<th>Quantity</th>
 									<td th:text="${data.sCode.quantity}"></td>
 								</tr>

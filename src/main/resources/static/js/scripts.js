@@ -53,4 +53,25 @@
     navbarCollapse();
     // Collapse the navbar when page is scrolled
     $(window).scroll(navbarCollapse);
+-
+    $(".table-row").click(function() {
+        //var newWindow = window.open("DrugInfo"); newWindow.;
+        //console.log($(this).data("href"));
+        window.location.href = $(this).data("href");
+    });
+    
+
+    $('#searchForm').on('submit',(e)=>{
+    	//e.preventDefault();
+    	console.log('type.val = '+$('#selectType option:selected').val());
+        if($('#type option:selected').val()=='' || $('#type option:selected').val()==null){
+            alert('Please select type to search.')
+            return false;
+        };
+        if($('#searchTxt').val()=='' || $('#searchTxt').val()==null){
+            alert('Please type text to search.')
+            return false;
+        };
+    })
+
 })(jQuery); // End of use strict

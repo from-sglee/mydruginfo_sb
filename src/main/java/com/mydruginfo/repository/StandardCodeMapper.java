@@ -13,8 +13,9 @@ public interface StandardCodeMapper {
 	int selectCountAllStandardCode();
 	int selectCountLikeColumn(String colName, String searchVal);
 	List<StandardCode> selectStandardCodeLikeColumn(String colName, String searchVal, int startIndex, int pageSize);
-	List<StandardCode> selectAllStandardCode(int pageNo, int perPage);
+	List<StandardCode> selectAllStandardCode(int startIndex, int pageSize);
 	List<StandardCode> selectStandardCodeByCompanyName(String companyName);
 	void insertStandardCode(StandardCode standardCode);
+	void deleteStandardCode(String sCode);
 
 }
