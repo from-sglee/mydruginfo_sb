@@ -16,6 +16,6 @@ public interface StandardCodeMapper {
 	List<StandardCode> selectAllStandardCode(int startIndex, int pageSize);
 	List<StandardCode> selectStandardCodeByCompanyName(String companyName);
 	void insertStandardCode(StandardCode standardCode);
-	void deleteStandardCode(String sCode);
+	void deleteStandardCode(long sCode);
 
 }

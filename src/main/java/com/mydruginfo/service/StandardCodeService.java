@@ -44,7 +44,7 @@ public class StandardCodeService {
     public void addStandardCode(StandardCode standardCode) {
     	sMapper.insertStandardCode(standardCode);
     }
-    public void delStandardCodeBySCode(String sCode) {
+    public void delStandardCodeBySCode(long sCode) {
     	sMapper.deleteStandardCode(sCode);
     }
 
