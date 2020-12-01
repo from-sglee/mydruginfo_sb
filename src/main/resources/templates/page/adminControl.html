@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout/default_layout}">
+
+	<div layout:fragment="content">
+		<section class="detail-section" id="detailStandardCode">
+			<div class="container">
+				<div class="row">
+					<div class="page-header">
+						<h2 class="text-secondary mb-4">Admin Control :: Standard Code</h2>
+					</div>
+						<table th:unless="${#lists.isEmpty(data.sCode)}" class="table text-dark table-detail">
+							<tbody>
+								<tr>
+									<th>standardCode</th>
+									<td th:text="${data.sCode.standard_code}"></td>
+									<td rowspan="4" colspan="2" class="image"><img th:src="${data.sCode.image_url} ? ${data.sCode.image_url} : '/image/default.png'"></td>
+								</tr>
+								<tr>
+									<th>Drug Name(kr)</th>
+									<td th:text="${data.sCode.drug_name_kr}"></td>
+								</tr>
+								<tr>
+									<th>Company Name</th>
+									<td th:text="${data.sCode.company_name}"></td>
+								</tr>
+								<tr>
+									<th>ATC Code</th>
+									<td th:text="${data.sCode.atc_code}"></td>
+								</tr>
+								<tr>
+									<th>Packing Capacity</th>
+									<td th:text="${data.sCode.packing_capacity}"></td>
+									<th>Quantity</th>
+									<td th:text="${data.sCode.quantity}"></td>
+								</tr>
+								<tr>
+									<th>Formulation type</th>
+									<td th:text="${data.sCode.formulation_type}"></td>
+									<th>Package type</th>
+									<td th:text="${data.sCode.package_type}"></td>
+								</tr>
+								<tr>
+									<th>Item code</th>
+									<td th:text="${data.sCode.item_code}"></td>
+									<th>Date authorization</th>
+									<td th:text="${data.sCode.date_authorization}"></td>
+								</tr>
+								<tr>
+									<th>Prescription required</th>
+									<td th:text="${data.sCode.drug_type}"></td>
+									<th>Representative code</th>
+									<td th:text="${data.sCode.representative_code}"></td>
+								</tr>
+								<tr>
+									<th>Standard code</th>
+									<td th:text="${data.sCode.standard_code}"></td>
+									<th>Product code</th>
+									<td th:text="${data.sCode.product_code}"></td>
+								</tr>
+								<tr>
+									<th>Common name code</th>
+									<td th:text="${data.sCode.common_name_code}"></td>
+									<th>Cancellation date</th>
+									<td th:text="${data.sCode.cancellation_date}"></td>
+								</tr>
+								<tr>
+									<th>Effective date</th>
+									<td th:text="${data.sCode.effective_date}"></td>
+									<th>End date</th>
+									<td th:text="${data.sCode.end_date}"></td>
+								</tr>
+								<tr>
+									<th>Atc code</th>
+									<td th:text="${data.sCode.atc_code}"></td>
+									<th>Specialcare type</th>
+									<td th:text="${data.sCode.specialcare_type}"></td>
+								</tr>
+								<tr>
+									<th>Reading equipment</th>
+									<td th:text="${data.sCode.reading_equipment}"></td>
+									<th colspan="2">Memo serialnumber</th>
+								</tr>
+								<tr>
+									<th>Serialnumber yn</th>
+									<td th:text="${data.sCode.serialnumber_yn}"></td>
+									<td colspan="2" th:text="${data.sCode.memo_serialnumber}"></td>
+								</tr>
+								<tr>
+									<th colspan="4">Memo</th>
+								</tr>
+								<tr>
+									<td colspan="4" th:text="${data.sCode.memo}"></td>
+								</tr>
+								
+							</tbody>
+						</table>
+					</div>
+					<script>
+									function deleteValue(scode,buttonvalue){
+										if(confirm("정말 삭제하시겠습니까?")){
+											var num=scode;
+											var value=buttonvalue;
+											return location.href ="/deletevalue/"+num+"/"+value;
+										}
+									}
+								</script>
+								<button type="button" class="btn btn-sm btn-primary" th:onclick = "deleteValue([[ ${data.sCode.standard_code} ]],[[ ${button_value} ]])">삭제</button>
+								<span>&nbsp;</span>
+								<button type="button" class="btn btn-sm btn-primary" th:onclick = "location.href = '/adminpage_edit'">수정</button>
+								<span>&nbsp;</span>
+								<button type="button" class="btn btn-sm btn-primary" th:onclick = "location.href = '/adminpage'">뒤로가기</button>
+				</div>
+			</div>
+		</section>
+	</div>
+</html>

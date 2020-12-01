@@ -67,6 +67,42 @@ public class AdminController {
 		}
 
 	}
+	
+	@RequestMapping("/adminpage_standard_code")
+	public ModelAndView adminpageSC(@RequestParam(defaultValue = "1") int page, HttpSession session) {
+
+		ModelAndView modelAndView = new ModelAndView();
+
+		if (session.getAttribute("admin_id") == null) {
+
+			modelAndView.setViewName("page/login");
+
+			return modelAndView;
+		}
+
+		else {
+
+			String button_value = null;
+
+			int totalListCnt = service.findAllCnt();
+
+			Pagination pagination = new Pagination(totalListCnt, page);
+
+			int startIndex = pagination.getStartIndex();
+			int pageSize = pagination.getPageSize();
+
+			List<StandardCode> list = service.AllStandardCode(startIndex, pageSize);
+			button_value = "standard_code";
+			modelAndView.addObject("List", list);
+			modelAndView.addObject("pagination", pagination);
+			modelAndView.addObject("button_value", button_value);
+			modelAndView.setViewName("page/adminpage");
+
+			return modelAndView;
+
+		}
+
+	}
 
 	@RequestMapping("/adminpage_insurance_covered")
 	public ModelAndView adminpageIC(@RequestParam(defaultValue = "1") int page, HttpSession session) {
@@ -116,50 +152,92 @@ public class AdminController {
 		return modelAndView;
 
 	}
-	
-	
+
 	@ResponseBody
-	@RequestMapping("/admin_control/{s_code}")
-	public ModelAndView adminValue(@PathVariable("s_code") String s_code, HttpServletResponse response) throws Exception{
+	@RequestMapping("/admin_control/{s_code}/{button_value}")
+	public ModelAndView adminValue(@PathVariable("button_value") String button_value,
+			@PathVariable("s_code") String s_code, HttpServletResponse response, HttpServletRequest request)
+			throws Exception {
+
 		ModelAndView modelAndView = new ModelAndView();
 		Map<String, Object> map = new HashMap<>();
+
+		switch (button_value) {
 		
-		StandardCode sCodeVO = standardservice.getStandardCodeBySCode(Long.parseLong(s_code));
-		
-		if(sCodeVO==null) {
-			System.out.println(">> getSCodeBySCode > sCodeVO is Empty");
-			modelAndView.setViewName("redirect:/");
-		}else {
-			System.out.println(">> getSCodeBySCode > sCodeVO.drug_name = " + sCodeVO.getDrug_name_kr());
-			map.put("function", "getScodeBySCode");
-			map.put("sCode", sCodeVO);
-			modelAndView.addObject("data", map);
-			modelAndView.setViewName("page/adminControl");
+		case "standard_code":
+
+			StandardCode sCodeVO = standardservice.getStandardCodeBySCode(Long.parseLong(s_code));
+
+			if (sCodeVO == null) {
+				System.out.println(">> getSCodeBySCode > sCodeVO is Empty");
+				modelAndView.setViewName("redirect:/");
+			} else {
+				System.out.println(">> getSCodeBySCode > sCodeVO.drug_name = " + sCodeVO.getDrug_name_kr());
+				map.put("function", "getScodeBySCode");
+				map.put("sCode", sCodeVO);
+				modelAndView.addObject("data", map);
+				modelAndView.addObject("button_value", button_value);
+				modelAndView.setViewName("page/adminControl");
+			}
+
+			break;
+
+		case "insurance_covered":
+
+			InsuranceCovered icCodeVO = standardservice.getStandardCodeByICCode(s_code);
+
+			if (icCodeVO == null) {
+				System.out.println(">> getICCodeByICCode > icCodeVO is Empty");
+				modelAndView.setViewName("redirect:/");
+			} else {
+				System.out.println(">> getICCodeByICCode > icCodeVO.drug_name = " + icCodeVO.getDrug_name_kr());
+				map.put("function", "getICcodeByICCode");
+				map.put("icCode", icCodeVO);
+				modelAndView.addObject("data", map);
+				modelAndView.addObject("button_value", button_value);
+				modelAndView.setViewName("page/adminControl");
+			}
+
+			break;
+
+		case "main_ingredient":
+			
+			MainIngredient mcCodeVO = standardservice.getStandardCodeByMICode(s_code);
+
+			if (mcCodeVO == null) {
+				System.out.println(">> getMCCodeByMCCode > mcCodeVO is Empty");
+				modelAndView.setViewName("redirect:/");
+			} else {
+				System.out.println(">> getMCCodeByMCCode > mcCodeVO.drug_name = " + mcCodeVO.getMain_ingredient_code());
+				map.put("function", "getScodeBySCode");
+				map.put("mcCode", mcCodeVO);
+				modelAndView.addObject("data", map);
+				modelAndView.addObject("button_value", button_value);
+				modelAndView.setViewName("page/adminControl");
+			}
+
+			break;
 		}
+
 		return modelAndView;
+
 	}
-	
-	
-	@RequestMapping("/deletevalue/{s_code}")
-	public ModelAndView delete(@PathVariable("s_code") String s_code, HttpServletResponse response) throws Exception{
+
+	@RequestMapping("/deletevalue/{s_code}/{button_value}")
+	public ModelAndView delete(@PathVariable("button_value") String button_value, @PathVariable("s_code") String s_code, HttpServletResponse response) throws Exception {
 		ModelAndView modelAndView = new ModelAndView();
-		
+
 		response.setContentType("text/html; charset=utf-8");
 
 		PrintWriter out = response.getWriter();
-		
-		standardservice.delStandardCodeBySCode(Long.parseLong(s_code));
-		
+
+		standardservice.delStandardCodeBySCode(Long.parseLong(s_code),button_value);
+
 		out.println("<script>alert('삭제 되었습니다.')</script>");
 		modelAndView.setViewName("page/adminpage");
 		out.flush();
-		
+
 		return modelAndView;
 	}
-	
-	
-	
-	
+
 }
-
-

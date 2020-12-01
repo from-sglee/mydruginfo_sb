@@ -15,6 +15,22 @@
 		WHERE standard_code = #{sCode, jdbcType=INTEGER}
 	</select>
 	
+	<select id="selectStandardCodeByICCode" resultType="com.mydruginfo.model.InsuranceCovered">
+		SELECT (ROW_NUMBER() OVER()) AS administration_method, classification_code, main_ingredient_code, main_ingredient_code_name
+				, product_code, drug_name_kr, company_name, pharma_standard, formulation_type
+				, price_limit, drug_type, drug_type, memo, product_code_before, reg_date
+		FROM tb_insurance_covered
+		WHERE product_code = #{icCode, jdbcType=INTEGER}
+	</select>
+	
+	<select id="selectStandardCodeByMICode" resultType="com.mydruginfo.model.MainIngredient">
+		SELECT (ROW_NUMBER() OVER()) AS main_ingredient_code, formulation_type_code
+				, main_ingredient_name, classification_code, administration_method, content_amount
+				, unit, reg_date
+		FROM tb_main_ingredient
+		WHERE main_ingredient_code = #{miCode, jdbcType=INTEGER}
+	</select>
+	
 	<select id="selectCountAllStandardCode" resultType="integer">
 		SELECT COUNT(*)
 		FROM tb_standard_code
@@ -80,7 +96,7 @@
 	</insert>
 
 	<delete id="deleteStandardCode" >
-		DELETE tb_standard_code
+		DELETE tb_#{value}
 		WHERE standard_code = #{sCode}
 	</delete>
 </mapper>
