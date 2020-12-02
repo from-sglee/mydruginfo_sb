@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.mydruginfo.model.InsuranceCovered;
+import com.mydruginfo.model.MainIngredient;
 import com.mydruginfo.model.StandardCode;
 import com.mydruginfo.repository.StandardCodeMapper;
 
@@ -18,6 +20,14 @@ public class StandardCodeService {
 
     public StandardCode getStandardCodeBySCode(long standardCode) {
         return sMapper.selectStandardCodeBySCode(standardCode);
+    }
+    
+    public InsuranceCovered getStandardCodeByICCode(String icCode) {
+        return sMapper.selectStandardCodeByICCode(icCode);
+    }
+    
+    public MainIngredient getStandardCodeByMICode(String miCode) {
+        return sMapper.selectStandardCodeByMICode(miCode);
     }
 
     public int getCountAllStandardCode() {
@@ -44,8 +54,8 @@ public class StandardCodeService {
     public void addStandardCode(StandardCode standardCode) {
     	sMapper.insertStandardCode(standardCode);
     }
-    public void delStandardCodeBySCode(String sCode) {
-    	sMapper.deleteStandardCode(sCode);
+    public void delStandardCodeBySCode(long sCode,String value) {
+    	sMapper.deleteStandardCode(sCode,value);
     }
 
 }

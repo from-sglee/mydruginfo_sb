@@ -30,6 +30,24 @@
 				count(*)
           FROM tb_standard_code
     </select>
+
+	<select id="AllInsuranceCovered" resultType="com.mydruginfo.model.InsuranceCovered">
+        SELECT drug_name_kr
+							, company_name
+							, main_ingredient_code
+							, product_code
+          FROM tb_insurance_covered
+		  LIMIT #{pageSize} OFFSET #{startIndex}
+    </select>
+
+	<select id="AllMainIngredient" resultType="com.mydruginfo.model.MainIngredient">
+        SELECT main_ingredient_code
+							, main_ingredient_name
+							, formulation_type_code
+							, classification_code
+          FROM tb_main_ingredient
+		  LIMIT #{pageSize} OFFSET #{startIndex}
+    </select>
 	
 	
 

@@ -28,9 +28,9 @@
               <div class="panel-heading">
                 <div class="row">
                   <div class="col-xs-10 text-left">
-					<button type="button" class="btn btn-sm btn-primary btn">Standard Code</button>
-					<button type="button" class="btn btn-sm btn-primary btn">Insurance Covered</button>
-					<button type="button" class="btn btn-sm btn-primary btn">Main Ingredient</button>
+					<button type="button" name="button_value" id="standard_code" value = "standard_code" class="btn btn-sm btn-primary" onclick = "location.href = '/adminpage'">Standard Code</button>
+					<button type="button" name="button_value" id="insurance_covered"  value = "insurance_covered" class="btn btn-sm btn-primary" onclick = "location.href = '/adminpage_insurance_covered'">Insurance Covered</button>
+					<button type="button" name="button_value" id="main_ingredient"  value = "main_ingredient" class="btn btn-sm btn-primary" onclick = "location.href = '/adminpage_main_ingredient'">Main Ingredient</button>
                   </div>
                   <div class="col-xs-1 text-right">
                     <button type="button" class="btn btn-sm btn-primary btn-create">Create New</button>
@@ -40,16 +40,30 @@
               <div class="panel-body">
                 <table class="table table-striped table-bordered table-list">
                   <thead>
-                    <tr>
+                    <tr th:if="${button_value} == 'standard_code'">
                         <th><em class="fa fa-cog"></em></th>
                         <th>Drug Name</th>
                         <th>Company Name</th>
                         <th>ATC Code</th>
 						<th>Standard Code</th>
+                    </tr>
+					<tr th:if="${button_value} == 'insurance_covered'">
+                        <th><em class="fa fa-cog"></em></th>
+                        <th>Drug Name</th>
+                        <th>Company Name</th>
+                        <th>Main Ingredient Code</th>
+						<th>Product Code</th>
+                    </tr> 
+					<tr th:if="${button_value} == 'main_ingredient'">
+                        <th><em class="fa fa-cog"></em></th>
+                        <th>Main Ingredient Code</th>
+                        <th>Main Ingredient Name</th>
+                        <th>Formulation Type Code</th>
+						<th>Classification Code</th>
                     </tr> 
                   </thead>
                   <tbody>
-                          <tr th:each="list : ${List}">
+                          <tr th:if="${button_value} == 'standard_code'" th:each="list : ${List}">
                             <td align="center">
                               <a class="btn btn-modify"><em class="fa fa-pencil"></em></a>
                               <a class="btn btn-delete"><em class="fa fa-trash"></em></a>
@@ -58,6 +72,26 @@
                             <td th:text="${list.company_name}"></td>
 							<td th:text="${list.atc_code}"></td>
                             <td th:text="${list.standard_code}"></td>
+                          </tr>
+						  <tr th:if="${button_value} == 'insurance_covered'" th:each="list : ${List}">
+                            <td align="center">
+                              <a class="btn btn-modify"><em class="fa fa-pencil"></em></a>
+                              <a class="btn btn-delete"><em class="fa fa-trash"></em></a>
+                            </td>
+                            <td th:text="${list.drug_name_kr}"></td>
+                            <td th:text="${list.company_name}"></td>
+							<td th:text="${list.main_ingredient_code}"></td>
+                            <td th:text="${list.product_code}"></td>
+                          </tr>
+						  <tr th:if="${button_value} == 'main_ingredient'" th:each="list : ${List}">
+                            <td align="center">
+                              <a class="btn btn-modify"><em class="fa fa-pencil"></em></a>
+                              <a class="btn btn-delete"><em class="fa fa-trash"></em></a>
+                            </td>
+                            <td th:text="${list.main_ingredient_code}"></td>
+                            <td th:text="${list.main_ingredient_name}"></td>
+							<td th:text="${list.formulation_type_code}"></td>
+                            <td th:text="${list.classification_code}"></td>
                           </tr>
                         </tbody>
                 </table>
