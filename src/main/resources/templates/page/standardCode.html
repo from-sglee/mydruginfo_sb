@@ -96,7 +96,9 @@
 								</tr>
 							</tbody>
 						</table>
+						<input type="hidden" id="pCode" name="pCode" th:value="${data.sCode.product_code}">
 						<input type="button" id="btnList" name="btnList" value="Previous Page" class="btn btn-primary mr-3" onclick="window.history.back();">
+						<input th:if="${data.sCode.product_code} != '0'" type="button" id="btnInsurance" name="btnInsurance" value="Insurance Info" class="btn btn-primary mr-3">
 					</div>
 				</div>
 			</div>

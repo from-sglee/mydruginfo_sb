@@ -39,7 +39,6 @@ public class StandardCodeController {
 			//out.println("<script>alert('잘못된 요청입니다.');</script>");
 			modelAndView.setViewName("redirect:/");
 		}else {
-			System.out.println(">> getSCodeBySCode > sCodeVO.drug_name = " + sCodeVO.getDrug_name_kr());
 			map.put("function", "getScodeBySCode");
 			map.put("sCode", sCodeVO);
 			modelAndView.addObject("data", map);

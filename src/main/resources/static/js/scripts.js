@@ -73,5 +73,70 @@
             return false;
         };
     })
+var flagInsu = false;
+    $("#btnInsurance").click(function(event){
+        console.log($("#pCode").val());
+        event.preventDefault();
+        // JSON request
+       if(!flagInsu){
+        var pCode = $("#pCode").val();
+        $.ajax({
+             url: "/ajaxInsurance/" + pCode,
+             type: "GET",
+             dataType: "json",          // ajax
+             contentType: "application/json",  // ajax
+             //data: {p_code : 646900710}, // JSON.stringify(data),
+             success: function(result){
+                 flagInsu = true;
+                 createInsurance(result);
+             }
+        })
+       }else{
+    	   $('.insurance').toggle();
+       }
 
+        
+    })
+    
+    var createInsurance = function(res){
+    	console.log(res.content.administration_method);
+    	
+    	var htmlCode = 
+    	"<table name='tableInsurance' class=\"table text-dark mt-3 mb-5 insurance\">"
+		+"<tbody>"
+		+"	<tr>"
+		+"		<th>Main Ingredient Name</th>"
+		+"		<td colspan='3'>"+res.content.main_ingredient_code+") "+res.content.main_ingredient_code_name+"</td>"
+		+"	</tr>"
+		+"	<tr>"
+		+"		<th>Product Code (Before)</th>"
+		+"		<td>"+res.content.product_code_before+"</td>"
+		+"		<th>Administration Method</th>"
+		+"		<td>"+res.content.administration_method+"</td>"
+		+"	</tr>"
+		+"	<tr>"
+		+"		<th>Drug Type</th>"
+		+"		<td>"+res.content.drug_type+"</td>"
+		+"		<th>ATC Code</th>"
+		+"		<td>"+res.content.temp_column+"</td>"
+		+"	</tr>"
+		+"	<tr>"
+		+"		<th>Formulation type</th>"
+		+"		<td>"+res.content.formulation_type+"</td>"
+		+"		<th>Package type</th>"
+		+"		<td>"+res.content.price_limit+"</td>"
+		+"	</tr>"
+		+"	<tr>"
+		+"		<th colspan=\"2\">Memo</th>"
+		+"		<th>Pharma standard</th>"
+		+"		<td>"+res.content.pharma_standard+"</td>"
+		+"	</tr>"
+		+"	<tr>"
+		+"		<td colspan=\"4\">"+res.content.memo+"</td>"
+		+"	</tr>"
+		+"</tbody>"
+		+"</table>";
+
+    	$('.row').append(htmlCode);
+    }
 })(jQuery); // End of use strict

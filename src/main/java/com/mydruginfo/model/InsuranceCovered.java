@@ -2,7 +2,7 @@ package com.mydruginfo.model;
 
 public class InsuranceCovered {
 	
-	String administaraion_method;
+	String administration_method;
 	int classification_code;
 	String main_ingredient_code;
 	String main_ingredient_code_name;
@@ -16,15 +16,39 @@ public class InsuranceCovered {
 	String memo;
 	int product_code_before;
 	String reg_date;
+	String temp_column;
 	public InsuranceCovered() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public String getAdministaraion_method() {
-		return administaraion_method;
+	
+	public InsuranceCovered(String administration_method, int classification_code, String main_ingredient_code,
+			String main_ingredient_code_name, String product_code, String drug_name_kr, String company_name,
+			String pharma_standard, String formulation_type, String price_limit, String drug_type, String memo,
+			int product_code_before, String reg_date, String temp_column) {
+		super();
+		this.administration_method = administration_method;
+		this.classification_code = classification_code;
+		this.main_ingredient_code = main_ingredient_code;
+		this.main_ingredient_code_name = main_ingredient_code_name;
+		this.product_code = product_code;
+		this.drug_name_kr = drug_name_kr;
+		this.company_name = company_name;
+		this.pharma_standard = pharma_standard;
+		this.formulation_type = formulation_type;
+		this.price_limit = price_limit;
+		this.drug_type = drug_type;
+		this.memo = memo;
+		this.product_code_before = product_code_before;
+		this.reg_date = reg_date;
+		this.temp_column = temp_column;
 	}
-	public void setAdministaraion_method(String administaraion_method) {
-		this.administaraion_method = administaraion_method;
+
+	public String getAdministration_method() {
+		return administration_method;
+	}
+	public void setAdministration_method(String administration_method) {
+		this.administration_method = administration_method;
 	}
 	public int getClassification_code() {
 		return classification_code;
@@ -104,15 +128,21 @@ public class InsuranceCovered {
 	public void setReg_date(String reg_date) {
 		this.reg_date = reg_date;
 	}
+	public String getTemp_column() {
+		return temp_column;
+	}
+	public void setTemp_column(String temp_column) {
+		this.temp_column = temp_column;
+	}
 	@Override
 	public String toString() {
-		return "InsuranceCovered [administaraion_method=" + administaraion_method + ", classification_code="
+		return "InsuranceCovered [administration_method=" + administration_method + ", classification_code="
 				+ classification_code + ", main_ingredient_code=" + main_ingredient_code
 				+ ", main_ingredient_code_name=" + main_ingredient_code_name + ", product_code=" + product_code
 				+ ", drug_name_kr=" + drug_name_kr + ", company_name=" + company_name + ", pharma_standard="
 				+ pharma_standard + ", formulation_type=" + formulation_type + ", price_limit=" + price_limit
 				+ ", drug_type=" + drug_type + ", memo=" + memo + ", product_code_before=" + product_code_before
-				+ ", reg_date=" + reg_date + "]";
+				+ ", reg_date=" + reg_date + ", temp_column=" + temp_column + "]";
 	}
 	
 
