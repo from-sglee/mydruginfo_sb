@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mydruginfo.repository.InsuranceCoveredMapper">
+
+	<select id="selectInsuranceInfoByPCode" resultType="com.mydruginfo.model.InsuranceCovered">
+		SELECT  administration_method, TB_C.classification_name_kr as temp_column, main_ingredient_code, 
+			main_ingredient_code_name, product_code, drug_name_kr, 
+			company_name, pharma_standard, formulation_type, 
+			price_limit, drug_type, memo, 
+			product_code_before, reg_date 
+		FROM  tb_insurance_covered TB_I INNER JOIN tb_classification_code TB_C 
+				ON CAST(TB_I.classification_code AS VARCHAR)=TB_C.classification_code
+		WHERE  product_code = #{pCode}
+	</select>
+
+	<select id="selectAllInsuranceInfo" resultType="com.mydruginfo.model.InsuranceCovered">
+		SELECT  administration_method, classification_code, main_ingredient_code, 
+			main_ingredient_code_name, product_code, drug_name_kr, 
+			company_name, pharma_standard, formulation_type, 
+			price_limit, drug_type, memo, 
+			product_code_before, reg_date 
+		FROM  tb_insurance_covered
+	</select>
+	
+	<select id="selectInsuranceInfoByDrugName" resultType="com.mydruginfo.model.InsuranceCovered">
+		SELECT  administration_method, classification_code, main_ingredient_code, 
+			main_ingredient_code_name, product_code, drug_name_kr, 
+			company_name, pharma_standard, formulation_type, 
+			price_limit, drug_type, memo, 
+			product_code_before, reg_date 
+		FROM  tb_insurance_covered
+		WHERE  drug_name_kr = #{drug_name}
+	</select>
+	
+	<insert id="insertInsuranceInfo" parameterType="com.mydruginfo.model.InsuranceCovered">
+		INSERT INTO tb_insurance_covered (administration_method, classification_code, main_ingredient_code, 
+				main_ingredient_code_name, product_code, drug_name_kr, 
+				company_name, pharma_standard, formulation_type, 
+				price_limit, drug_type, memo, 
+				product_code_before)
+		VALUES (	#{administration_method}, 
+						#{classification_code}, 
+						#{main_ingredient_code}, 
+						#{main_ingredient_code_name}, 
+						#{product_code}, 
+						#{drug_name_kr}, 
+						#{company_name}, 
+						#{pharma_standard}, 
+						#{formulation_type}, 
+						#{price_limit}, 
+						#{drug_type}, 
+						#{memo}, 
+						#{product_code_before}, 
+						#{reg_date})
+	</insert>
+	
+	<update id="updateInsuranceInfo" parameterType="com.mydruginfo.model.InsuranceCovered">
+		UPDATE tb_insurance_covered 
+		SET
+			administration_method = #{administration_method}, 
+			classification_code = #{classification_code}, 
+			main_ingredient_code = #{main_ingredient_code}, 
+			main_ingredient_code_name = #{main_ingredient_code_name}, 
+			product_code = #{product_code}, 
+			drug_name_kr = #{drug_name_kr}, 
+			company_name = #{company_name}, 
+			pharma_standard = #{pharma_standard}, 
+			formulation_type = #{formulation_type}, 
+			price_limit = #{price_limit}, 
+			drug_type = #{drug_type}, 
+			memo = #{memo}, 
+			product_code_before = #{product_code_before}
+		WHERE product_code=#{pCode}
+	</update>
+
+</mapper>

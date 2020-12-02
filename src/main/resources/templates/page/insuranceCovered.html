@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout/default_layout}">
+
+	<div layout:fragment="content">
+		<section class="about-section text-center" id="detail_insuranceCovered">
+			<div class="container">
+				<div class="row">
+					<div class="page-header">
+						<h2 class="text-white mb-4">Detail Information :: Insurance Covered Drugs</h2>
+					</div>
+					<div class="col-md-12 mt-5">
+						<table class="table text-white-50">
+							<tbody>
+administration_method, temp_column, main_ingredient_code, main_ingredient_code_name, 
+product_code, drug_name_kr, company_name, pharma_standard, formulation_type, price_limit, 
+drug_type, memo, product_code_before, reg_date
+
+								<tr>
+									<th>Drug Name(kr)</th>
+									<td colspan="2" th:text="${data.iInfoVO.drug_name_kr}"></td>
+								</tr>
+								<tr>
+									<th>Company Name</th>
+									<td th:text="${data.iInfoVO.company_name}"></td>
+									<th>Product Code</th>
+									<td th:text="${data.iInfoVO.product_code}"></td>
+								</tr>
+								<tr>
+									<th>Product Code (Before)</th>
+									<td th:text="${data.iInfoVO.product_code_before}"></td>
+									<th>Administration Method</th>
+									<td th:text="${data.iInfoVO.administration_method}"></td>
+								</tr>
+								<tr>
+									<th>Main Ingredient Name</th>
+									<td th:text="${data.iInfoVO.main_ingredient_code_name}"></td>
+									<th>MAin Ingredient Code</th>
+									<td th:text="${data.iInfoVO.main_ingredient_code}"></td>
+								</tr>
+								<tr>
+									<th>Pharma standard</th>
+									<td th:text="${data.iInfoVO.pharma_standard}"></td>
+									<th>ATC Code</th>
+									<td th:text="${data.iInfoVO.temp_column}"></td>
+								</tr>
+								<tr>
+									<th>Formulation type</th>
+									<td th:text="${data.iInfoVO.formulation_type}"></td>
+									<th>Package type</th>
+									<td th:text="${data.iInfoVO.price_limit}"></td>
+								</tr>
+								<tr>
+									<th>Prescription required</th>
+									<td th:text="${data.iInfoVO.drug_type}"></td>
+									<th>reg_Date</th>
+									<td th:text="${data.iInfoVO.reg_date}"></td>
+								</tr>
+								<tr>
+									<th colspan="4">Memo</th>
+								</tr>
+								<tr>
+									<td colspan="4" th:text="${data.iInfoVO.memo}"></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</section>
+	</div>
+</html>
